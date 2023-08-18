@@ -1,0 +1,16 @@
+# Auto Configuration Import
+org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
+io.github.hanpijunbuhanpi.baidu.sdk.config.property.BaiduGlobalConfigurationProperties,\
+io.github.hanpijunbuhanpi.baidu.sdk.config.property.BaiduBodyAnalysisConfigurationProperties,\
+io.github.hanpijunbuhanpi.baidu.sdk.config.property.BaiduContentCensorConfigurationProperties,\
+io.github.hanpijunbuhanpi.baidu.sdk.config.property.BaiduEasyDLConfigurationProperties,\
+io.github.hanpijunbuhanpi.baidu.sdk.config.property.BaiduFaceConfigurationProperties,\
+io.github.hanpijunbuhanpi.baidu.sdk.config.property.BaiduImageClassifyConfigurationProperties,\
+io.github.hanpijunbuhanpi.baidu.sdk.config.property.BaiduImageProcessConfigurationProperties,\
+io.github.hanpijunbuhanpi.baidu.sdk.config.property.BaiduImageSearchConfigurationProperties,\
+io.github.hanpijunbuhanpi.baidu.sdk.config.property.BaiduKnowledgeGraphicConfigurationProperties,\
+io.github.hanpijunbuhanpi.baidu.sdk.config.property.BaiduMachineTranslationConfigurationProperties,\
+io.github.hanpijunbuhanpi.baidu.sdk.config.property.BaiduNlpConfigurationProperties,\
+io.github.hanpijunbuhanpi.baidu.sdk.config.property.BaiduOcrConfigurationProperties,\
+io.github.hanpijunbuhanpi.baidu.sdk.config.property.BaiduSpeechConfigurationProperties,\
+io.github.hanpijunbuhanpi.baidu.sdk.config.BaiduSdkAutoConfiguration

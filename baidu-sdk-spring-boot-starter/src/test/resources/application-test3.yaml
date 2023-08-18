@@ -1,0 +1,17 @@
+baidu-sdk:
+  global:
+    app-id: 111
+    api-key: 222
+    secret-key: 333
+  body-analysis:
+    enable: false
+  content-censor:
+    enable: false
+  easy-dl:
+    enable: false
+  face:
+    enable: false
+  image-classify:
+    enable: false
+  image-process:
+    enable: false

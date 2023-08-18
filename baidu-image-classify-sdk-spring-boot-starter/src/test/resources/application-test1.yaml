@@ -1,0 +1,5 @@
+baidu-sdk:
+  image-classify:
+    app-id: 111
+    api-key: 222
+    secret-key: 333

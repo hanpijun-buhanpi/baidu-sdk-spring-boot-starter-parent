@@ -1,0 +1,5 @@
+baidu-sdk:
+  machine-translation:
+    app-id: 111
+    api-key: 222
+    secret-key: 333

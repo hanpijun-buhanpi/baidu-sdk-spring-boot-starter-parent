@@ -1,6 +1,7 @@
 package io.github.hanpijunbuhanpi.baidu.sdk.bodyanalysis.config;
 
 import com.baidu.aip.bodyanalysis.AipBodyAnalysis;
+import io.github.hanpijunbuhanpi.baidu.sdk.bodyanalysis.service.BaiduBodyAnalysis;
 import io.github.hanpijunbuhanpi.baidu.sdk.common.config.BaseBaiduSdkAutoConfiguration;
 import io.github.hanpijunbuhanpi.baidu.sdk.common.config.property.BaiduGlobalConfigurationProperties;
 import io.github.hanpijunbuhanpi.baidu.sdk.bodyanalysis.config.property.BaiduBodyAnalysisConfigurationProperties;
@@ -32,5 +33,17 @@ public class BaiduBodyAnalysisSdkAutoConfiguration extends BaseBaiduSdkAutoConfi
     @ConditionalOnMissingBean(AipBodyAnalysis.class)
     public AipBodyAnalysis aipBodyAnalysis(BaiduGlobalConfigurationProperties global, BaiduBodyAnalysisConfigurationProperties properties) {
         return super.init(global, properties, AipBodyAnalysis.class, "百度人体分析配置：");
+    }
+
+    /**
+     * 百度SDK Starter人体分析客户端
+     *
+     * @return 百度SDK Starter人体分析客户端
+     */
+    @Bean
+    @ConditionalOnProperty(prefix = "baidu-sdk.body-analysis", name = "enable", havingValue = "true", matchIfMissing = true)
+    @ConditionalOnMissingBean({BaiduBodyAnalysis.class})
+    public BaiduBodyAnalysis baiduBodyAnalysis() {
+        return new BaiduBodyAnalysis();
     }
 }

@@ -13,6 +13,18 @@ import com.baidu.aip.machinetranslation.Machinetranslation;
 import com.baidu.aip.nlp.AipNlp;
 import com.baidu.aip.ocr.AipOcr;
 import com.baidu.aip.speech.AipSpeech;
+import io.github.hanpijunbuhanpi.baidu.sdk.bodyanalysis.service.BaiduBodyAnalysis;
+import io.github.hanpijunbuhanpi.baidu.sdk.contentcensor.service.BaiduContentCensor;
+import io.github.hanpijunbuhanpi.baidu.sdk.easydl.service.BaiduEasyDL;
+import io.github.hanpijunbuhanpi.baidu.sdk.face.service.BaiduFace;
+import io.github.hanpijunbuhanpi.baidu.sdk.imageclassify.service.BaiduImageClassify;
+import io.github.hanpijunbuhanpi.baidu.sdk.imageprocess.service.BaiduImageProcess;
+import io.github.hanpijunbuhanpi.baidu.sdk.imagesearch.service.BaiduImageSearch;
+import io.github.hanpijunbuhanpi.baidu.sdk.kg.service.BaiduKnowledgeGraphic;
+import io.github.hanpijunbuhanpi.baidu.sdk.machinetranslation.service.BaiduMachineTranslation;
+import io.github.hanpijunbuhanpi.baidu.sdk.nlp.service.BaiduNlp;
+import io.github.hanpijunbuhanpi.baidu.sdk.ocr.service.BaiduOcr;
+import io.github.hanpijunbuhanpi.baidu.sdk.speech.service.BaiduSpeech;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -66,22 +78,22 @@ public class PartDisableTest {
             b4 = true;
         }
         Assert.isTrue(b4, "人脸识别客户端注册了");
-        // 图像增强
+        // 图像识别
         boolean b5 = false;
         try {
             applicationContext.getBean(AipImageClassify.class);
         } catch (Exception e) {
             b5 = true;
         }
-        Assert.isTrue(b5, "图像增强客户端注册了");
-        // 图像处理
+        Assert.isTrue(b5, "图像识别客户端注册了");
+        // 图像增强
         boolean b6 = false;
         try {
             applicationContext.getBean(AipImageProcess.class);
         } catch (Exception e) {
             b6 = true;
         }
-        Assert.isTrue(b6, "图像处理客户端注册了");
+        Assert.isTrue(b6, "图像增强客户端注册了");
         // 图像搜索
         applicationContext.getBean(AipImageSearch.class);
         // 知识图谱
@@ -94,5 +106,68 @@ public class PartDisableTest {
         applicationContext.getBean(AipOcr.class);
         // 语音技术
         applicationContext.getBean(AipSpeech.class);
+
+
+
+        // 人体分析
+        b1 = false;
+        try {
+            applicationContext.getBean(BaiduBodyAnalysis.class);
+        } catch (Exception e) {
+            b1 = true;
+        }
+        Assert.isTrue(b1, "Starter人体分析客户端注册了");
+        // 内容审核
+        b2 = false;
+        try {
+            applicationContext.getBean(BaiduContentCensor.class);
+        } catch (Exception e) {
+            b2 = true;
+        }
+        Assert.isTrue(b2, "Starter内容审核客户端注册了");
+        // EasyDL零门槛AI开发
+        b3 = false;
+        try {
+            applicationContext.getBean(BaiduEasyDL.class);
+        } catch (Exception e) {
+            b3 = true;
+        }
+        Assert.isTrue(b3, "Starter EasyDL客户端注册了");
+        // 人脸识别
+        b4 = false;
+        try {
+            applicationContext.getBean(BaiduFace.class);
+        } catch (Exception e) {
+            b4 = true;
+        }
+        Assert.isTrue(b4, "Starter人脸识别客户端注册了");
+        // 图像识别
+        b5 = false;
+        try {
+            applicationContext.getBean(BaiduImageClassify.class);
+        } catch (Exception e) {
+            b5 = true;
+        }
+        Assert.isTrue(b5, "Starter图像识别客户端注册了");
+        // 图像增强
+        b6 = false;
+        try {
+            applicationContext.getBean(BaiduImageProcess.class);
+        } catch (Exception e) {
+            b6 = true;
+        }
+        Assert.isTrue(b6, "Starter图像增强客户端注册了");
+        // 图像搜索
+        applicationContext.getBean(BaiduImageSearch.class);
+        // 知识图谱
+        applicationContext.getBean(BaiduKnowledgeGraphic.class);
+        // 机器翻译
+        applicationContext.getBean(BaiduMachineTranslation.class);
+        // 自然语言处理
+        applicationContext.getBean(BaiduNlp.class);
+        // 文字识别
+        applicationContext.getBean(BaiduOcr.class);
+        // 语音技术
+        applicationContext.getBean(BaiduSpeech.class);
     }
 }

@@ -3,6 +3,7 @@ package io.test;
 import io.App;
 import com.baidu.aip.contentcensor.AipContentCensor;
 import io.github.hanpijunbuhanpi.baidu.sdk.contentcensor.config.property.BaiduContentCensorConfigurationProperties;
+import io.github.hanpijunbuhanpi.baidu.sdk.contentcensor.service.BaiduContentCensor;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -22,6 +23,8 @@ public class AllParamTest {
     private BaiduContentCensorConfigurationProperties properties;
     @Autowired
     private AipContentCensor aipContentCensor;
+    @Autowired
+    private BaiduContentCensor baiduContentCensor;
 
     @Test
     public void test() {
@@ -30,5 +33,6 @@ public class AllParamTest {
         Assert.isTrue(properties.getApiKey().equals("222"), "api-key属性异常");
         Assert.isTrue(properties.getSecretKey().equals("333"), "secret-key属性异常");
         Assert.isTrue(aipContentCensor != null, "客户端未注册");
+        Assert.isTrue(baiduContentCensor != null, "Starter客户端未注册");
     }
 }

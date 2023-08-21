@@ -3,6 +3,7 @@ package io.test;
 import io.App;
 import com.baidu.aip.machinetranslation.Machinetranslation;
 import io.github.hanpijunbuhanpi.baidu.sdk.machinetranslation.config.property.BaiduMachineTranslationConfigurationProperties;
+import io.github.hanpijunbuhanpi.baidu.sdk.machinetranslation.service.BaiduMachineTranslation;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -22,6 +23,8 @@ public class AllParamTest {
     private BaiduMachineTranslationConfigurationProperties properties;
     @Autowired
     private Machinetranslation machinetranslation;
+    @Autowired
+    private BaiduMachineTranslation baiduMachineTranslation;
 
     @Test
     public void test() {
@@ -30,5 +33,6 @@ public class AllParamTest {
         Assert.isTrue(properties.getApiKey().equals("222"), "api-key属性异常");
         Assert.isTrue(properties.getSecretKey().equals("333"), "secret-key属性异常");
         Assert.isTrue(machinetranslation != null, "客户端未注册");
+        Assert.isTrue(baiduMachineTranslation != null, "Starter客户端未注册");
     }
 }

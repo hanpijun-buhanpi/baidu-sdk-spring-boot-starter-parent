@@ -4,6 +4,7 @@ import com.baidu.aip.kg.AipKnowledgeGraphic;
 import io.github.hanpijunbuhanpi.baidu.sdk.common.config.BaseBaiduSdkAutoConfiguration;
 import io.github.hanpijunbuhanpi.baidu.sdk.common.config.property.BaiduGlobalConfigurationProperties;
 import io.github.hanpijunbuhanpi.baidu.sdk.kg.config.property.BaiduKnowledgeGraphicConfigurationProperties;
+import io.github.hanpijunbuhanpi.baidu.sdk.kg.service.BaiduKnowledgeGraphic;
 import org.springframework.boot.autoconfigure.AutoConfiguration;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
@@ -32,5 +33,17 @@ public class BaiduKnowledgeGraphicSdkAutoConfiguration extends BaseBaiduSdkAutoC
     @ConditionalOnMissingBean(AipKnowledgeGraphic.class)
     public AipKnowledgeGraphic aipKnowledgeGraphic(BaiduGlobalConfigurationProperties global, BaiduKnowledgeGraphicConfigurationProperties properties) {
         return super.init(global, properties, AipKnowledgeGraphic.class, "百度知识图谱配置：");
+    }
+
+    /**
+     * 百度SDK Starter知识图谱客户端
+     *
+     * @return 百度SDK Starter知识图谱客户端
+     */
+    @Bean
+    @ConditionalOnProperty(prefix = "baidu-sdk.kg", name = "enable", havingValue = "true", matchIfMissing = true)
+    @ConditionalOnMissingBean({BaiduKnowledgeGraphic.class})
+    public BaiduKnowledgeGraphic baiduKnowledgeGraphic() {
+        return new BaiduKnowledgeGraphic();
     }
 }

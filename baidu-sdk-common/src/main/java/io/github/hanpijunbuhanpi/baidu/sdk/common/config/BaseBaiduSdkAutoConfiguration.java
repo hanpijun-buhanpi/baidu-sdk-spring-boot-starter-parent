@@ -1,8 +1,15 @@
 package io.github.hanpijunbuhanpi.baidu.sdk.common.config;
 
 import com.baidu.aip.client.BaseClient;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import io.github.hanpijunbuhanpi.baidu.sdk.common.config.property.BaseBaiduConfigurationProperties;
 import io.github.hanpijunbuhanpi.baidu.sdk.common.config.property.BaiduGlobalConfigurationProperties;
+import io.github.hanpijunbuhanpi.baidu.sdk.common.service.BaiduBeanService;
+import io.github.hanpijunbuhanpi.baidu.sdk.common.service.impl.BaiduBeanServiceJacksonImpl;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnClass;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
+import org.springframework.context.annotation.Bean;
 
 import java.lang.reflect.Field;
 import java.net.Proxy;
@@ -82,5 +89,18 @@ public class BaseBaiduSdkAutoConfiguration {
         } catch (IllegalAccessException e) {
             throw new RuntimeException(" 百度SDK配置属性复制异常", e);
         }
+    }
+
+    /**
+     * 注册百度Bean服务
+     *
+     * @return 百度Bean服务Jackson实现
+     */
+    @Bean
+    @ConditionalOnProperty(prefix = "baidu-sdk.global", name = "enable", havingValue = "true", matchIfMissing = true)
+    @ConditionalOnClass({ObjectMapper.class})
+    @ConditionalOnMissingBean({BaiduBeanService.class})
+    public BaiduBeanService baiduBeanService() {
+        return new BaiduBeanServiceJacksonImpl();
     }
 }

@@ -4,6 +4,7 @@ import com.baidu.aip.easydl.AipEasyDL;
 import io.github.hanpijunbuhanpi.baidu.sdk.common.config.BaseBaiduSdkAutoConfiguration;
 import io.github.hanpijunbuhanpi.baidu.sdk.common.config.property.BaiduGlobalConfigurationProperties;
 import io.github.hanpijunbuhanpi.baidu.sdk.easydl.config.property.BaiduEasyDLConfigurationProperties;
+import io.github.hanpijunbuhanpi.baidu.sdk.easydl.service.BaiduEasyDL;
 import org.springframework.boot.autoconfigure.AutoConfiguration;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
@@ -32,5 +33,17 @@ public class BaiduEasyDLSdkAutoConfiguration extends BaseBaiduSdkAutoConfigurati
     @ConditionalOnMissingBean(AipEasyDL.class)
     public AipEasyDL aipEasyDL(BaiduGlobalConfigurationProperties global, BaiduEasyDLConfigurationProperties properties) {
         return super.init(global, properties, AipEasyDL.class, "百度EasyDL配置：");
+    }
+
+    /**
+     * 百度SDK Starter EasyDL客户端
+     *
+     * @return 百度SDK Starter EasyDL客户端
+     */
+    @Bean
+    @ConditionalOnProperty(prefix = "baidu-sdk.easy-dl", name = "enable", havingValue = "true", matchIfMissing = true)
+    @ConditionalOnMissingBean({BaiduEasyDL.class})
+    public BaiduEasyDL baiduEasyDL() {
+        return new BaiduEasyDL();
     }
 }

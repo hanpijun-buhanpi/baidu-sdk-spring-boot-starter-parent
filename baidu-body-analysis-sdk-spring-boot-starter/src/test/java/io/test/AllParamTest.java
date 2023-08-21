@@ -3,6 +3,7 @@ package io.test;
 import com.baidu.aip.bodyanalysis.AipBodyAnalysis;
 import io.App;
 import io.github.hanpijunbuhanpi.baidu.sdk.bodyanalysis.config.property.BaiduBodyAnalysisConfigurationProperties;
+import io.github.hanpijunbuhanpi.baidu.sdk.bodyanalysis.service.BaiduBodyAnalysis;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -22,6 +23,8 @@ public class AllParamTest {
     private BaiduBodyAnalysisConfigurationProperties properties;
     @Autowired
     private AipBodyAnalysis aipBodyAnalysis;
+    @Autowired
+    private BaiduBodyAnalysis baiduBodyAnalysis;
 
     @Test
     public void test() {
@@ -30,5 +33,6 @@ public class AllParamTest {
         Assert.isTrue(properties.getApiKey().equals("222"), "api-key属性异常");
         Assert.isTrue(properties.getSecretKey().equals("333"), "secret-key属性异常");
         Assert.isTrue(aipBodyAnalysis != null, "客户端未注册");
+        Assert.isTrue(baiduBodyAnalysis != null, "Starter客户端未注册");
     }
 }

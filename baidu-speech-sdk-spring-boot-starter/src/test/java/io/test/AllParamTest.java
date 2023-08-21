@@ -3,6 +3,7 @@ package io.test;
 import io.App;
 import com.baidu.aip.speech.AipSpeech;
 import io.github.hanpijunbuhanpi.baidu.sdk.speech.config.property.BaiduSpeechConfigurationProperties;
+import io.github.hanpijunbuhanpi.baidu.sdk.speech.service.BaiduSpeech;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -22,6 +23,8 @@ public class AllParamTest {
     private BaiduSpeechConfigurationProperties properties;
     @Autowired
     private AipSpeech aipSpeech;
+    @Autowired
+    private BaiduSpeech baiduSpeech;
 
     @Test
     public void test() {
@@ -30,5 +33,6 @@ public class AllParamTest {
         Assert.isTrue(properties.getApiKey().equals("222"), "api-key属性异常");
         Assert.isTrue(properties.getSecretKey().equals("333"), "secret-key属性异常");
         Assert.isTrue(aipSpeech != null, "客户端未注册");
+        Assert.isTrue(baiduSpeech != null, "Starter客户端未注册");
     }
 }

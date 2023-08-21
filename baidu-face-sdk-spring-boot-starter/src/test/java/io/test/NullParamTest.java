@@ -3,6 +3,7 @@ package io.test;
 import io.App;
 import com.baidu.aip.face.AipFace;
 import io.github.hanpijunbuhanpi.baidu.sdk.face.config.property.BaiduFaceConfigurationProperties;
+import io.github.hanpijunbuhanpi.baidu.sdk.face.service.BaiduFace;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -22,6 +23,8 @@ public class NullParamTest {
     private BaiduFaceConfigurationProperties properties;
     @Autowired
     private AipFace aipFace;
+    @Autowired
+    private BaiduFace baiduFace;
 
     @Test
     public void test() {
@@ -30,5 +33,6 @@ public class NullParamTest {
         Assert.isTrue(properties.getApiKey() == null, "api-key属性注入了");
         Assert.isTrue(properties.getSecretKey() == null, "secret-key属性注入了");
         Assert.isTrue(aipFace == null, "客户端注册了");
+        Assert.isTrue(baiduFace == null, "Starter客户端注册了");
     }
 }

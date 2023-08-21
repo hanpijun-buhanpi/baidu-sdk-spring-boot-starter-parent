@@ -4,6 +4,7 @@ import com.baidu.aip.imagesearch.AipImageSearch;
 import io.github.hanpijunbuhanpi.baidu.sdk.common.config.BaseBaiduSdkAutoConfiguration;
 import io.github.hanpijunbuhanpi.baidu.sdk.common.config.property.BaiduGlobalConfigurationProperties;
 import io.github.hanpijunbuhanpi.baidu.sdk.imagesearch.config.property.BaiduImageSearchConfigurationProperties;
+import io.github.hanpijunbuhanpi.baidu.sdk.imagesearch.service.BaiduImageSearch;
 import org.springframework.boot.autoconfigure.AutoConfiguration;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
@@ -32,5 +33,17 @@ public class BaiduImageSearchSdkAutoConfiguration extends BaseBaiduSdkAutoConfig
     @ConditionalOnMissingBean(AipImageSearch.class)
     public AipImageSearch aipImageSearch(BaiduGlobalConfigurationProperties global, BaiduImageSearchConfigurationProperties properties) {
         return super.init(global, properties, AipImageSearch.class, "百度图像搜索配置：");
+    }
+
+    /**
+     * 百度SDK Starter图像搜索客户端
+     *
+     * @return 百度SDK Starter图像搜索客户端
+     */
+    @Bean
+    @ConditionalOnProperty(prefix = "baidu-sdk.image-search", name = "enable", havingValue = "true", matchIfMissing = true)
+    @ConditionalOnMissingBean({BaiduImageSearch.class})
+    public BaiduImageSearch baiduImageSearch() {
+        return new BaiduImageSearch();
     }
 }

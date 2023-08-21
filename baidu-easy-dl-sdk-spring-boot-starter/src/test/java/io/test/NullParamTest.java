@@ -3,6 +3,7 @@ package io.test;
 import io.App;
 import com.baidu.aip.easydl.AipEasyDL;
 import io.github.hanpijunbuhanpi.baidu.sdk.easydl.config.property.BaiduEasyDLConfigurationProperties;
+import io.github.hanpijunbuhanpi.baidu.sdk.easydl.service.BaiduEasyDL;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -22,6 +23,8 @@ public class NullParamTest {
     private BaiduEasyDLConfigurationProperties properties;
     @Autowired
     private AipEasyDL aipEasyDL;
+    @Autowired
+    private BaiduEasyDL baiduEasyDL;
 
     @Test
     public void test() {
@@ -30,5 +33,6 @@ public class NullParamTest {
         Assert.isTrue(properties.getApiKey() == null, "api-key属性注入了");
         Assert.isTrue(properties.getSecretKey() == null, "secret-key属性注入了");
         Assert.isTrue(aipEasyDL == null, "客户端注册了");
+        Assert.isTrue(baiduEasyDL == null, "Starter客户端注册了");
     }
 }

@@ -3,6 +3,7 @@ package io.test;
 import io.App;
 import com.baidu.aip.imageclassify.AipImageClassify;
 import io.github.hanpijunbuhanpi.baidu.sdk.imageclassify.config.property.BaiduImageClassifyConfigurationProperties;
+import io.github.hanpijunbuhanpi.baidu.sdk.imageclassify.service.BaiduImageClassify;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -22,6 +23,8 @@ public class NullParamTest {
     private BaiduImageClassifyConfigurationProperties properties;
     @Autowired
     private AipImageClassify aipImageClassify;
+    @Autowired
+    private BaiduImageClassify baiduImageClassify;
 
     @Test
     public void test() {
@@ -30,5 +33,6 @@ public class NullParamTest {
         Assert.isTrue(properties.getApiKey() == null, "api-key属性注入了");
         Assert.isTrue(properties.getSecretKey() == null, "secret-key属性注入了");
         Assert.isTrue(aipImageClassify == null, "客户端注册了");
+        Assert.isTrue(baiduImageClassify == null, "Starter客户端注册了");
     }
 }

@@ -4,6 +4,7 @@ import com.baidu.aip.speech.AipSpeech;
 import io.github.hanpijunbuhanpi.baidu.sdk.common.config.BaseBaiduSdkAutoConfiguration;
 import io.github.hanpijunbuhanpi.baidu.sdk.common.config.property.BaiduGlobalConfigurationProperties;
 import io.github.hanpijunbuhanpi.baidu.sdk.speech.config.property.BaiduSpeechConfigurationProperties;
+import io.github.hanpijunbuhanpi.baidu.sdk.speech.service.BaiduSpeech;
 import org.springframework.boot.autoconfigure.AutoConfiguration;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
@@ -32,5 +33,17 @@ public class BaiduSpeechSdkAutoConfiguration extends BaseBaiduSdkAutoConfigurati
     @ConditionalOnMissingBean(AipSpeech.class)
     public AipSpeech aipSpeech(BaiduGlobalConfigurationProperties global, BaiduSpeechConfigurationProperties properties) {
         return super.init(global, properties, AipSpeech.class, "百度语音技术配置：");
+    }
+
+    /**
+     * 百度SDK Starter语音技术客户端
+     *
+     * @return 百度SDK Starter语音技术客户端
+     */
+    @Bean
+    @ConditionalOnProperty(prefix = "baidu-sdk.speech", name = "enable", havingValue = "true", matchIfMissing = true)
+    @ConditionalOnMissingBean({BaiduSpeech.class})
+    public BaiduSpeech baiduSpeech() {
+        return new BaiduSpeech();
     }
 }

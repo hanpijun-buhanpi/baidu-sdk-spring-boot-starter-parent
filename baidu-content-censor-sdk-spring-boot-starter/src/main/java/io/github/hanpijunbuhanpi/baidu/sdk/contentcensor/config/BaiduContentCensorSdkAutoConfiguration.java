@@ -4,6 +4,7 @@ import com.baidu.aip.contentcensor.AipContentCensor;
 import io.github.hanpijunbuhanpi.baidu.sdk.common.config.BaseBaiduSdkAutoConfiguration;
 import io.github.hanpijunbuhanpi.baidu.sdk.common.config.property.BaiduGlobalConfigurationProperties;
 import io.github.hanpijunbuhanpi.baidu.sdk.contentcensor.config.property.BaiduContentCensorConfigurationProperties;
+import io.github.hanpijunbuhanpi.baidu.sdk.contentcensor.service.BaiduContentCensor;
 import org.springframework.boot.autoconfigure.AutoConfiguration;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
@@ -32,5 +33,17 @@ public class BaiduContentCensorSdkAutoConfiguration extends BaseBaiduSdkAutoConf
     @ConditionalOnMissingBean(AipContentCensor.class)
     public AipContentCensor aipContentCensor(BaiduGlobalConfigurationProperties global, BaiduContentCensorConfigurationProperties properties) {
         return super.init(global, properties, AipContentCensor.class, "百度内容审核配置：");
+    }
+
+    /**
+     * 百度SDK Starter内容审核客户端
+     *
+     * @return 百度SDK Starter内容审核客户端
+     */
+    @Bean
+    @ConditionalOnProperty(prefix = "baidu-sdk.content-censor", name = "enable", havingValue = "true", matchIfMissing = true)
+    @ConditionalOnMissingBean({BaiduContentCensor.class})
+    public BaiduContentCensor baiduContentCensor() {
+        return new BaiduContentCensor();
     }
 }

@@ -2,7 +2,7 @@ package io.test;
 
 import com.baidu.aip.bodyanalysis.AipBodyAnalysis;
 import io.App;
-import io.github.hanpijunbuhanpi.baidu.sdk.config.property.BaiduBodyAnalysisConfigurationProperties;
+import io.github.hanpijunbuhanpi.baidu.sdk.bodyanalysis.config.property.BaiduBodyAnalysisConfigurationProperties;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;

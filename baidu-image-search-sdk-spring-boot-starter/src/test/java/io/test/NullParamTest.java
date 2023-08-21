@@ -2,7 +2,7 @@ package io.test;
 
 import io.App;
 import com.baidu.aip.imagesearch.AipImageSearch;
-import io.github.hanpijunbuhanpi.baidu.sdk.config.property.BaiduImageSearchConfigurationProperties;
+import io.github.hanpijunbuhanpi.baidu.sdk.imagesearch.config.property.BaiduImageSearchConfigurationProperties;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;

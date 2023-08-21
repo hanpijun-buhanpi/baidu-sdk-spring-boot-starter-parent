@@ -2,7 +2,7 @@ package io.test;
 
 import io.App;
 import com.baidu.aip.face.AipFace;
-import io.github.hanpijunbuhanpi.baidu.sdk.config.property.BaiduFaceConfigurationProperties;
+import io.github.hanpijunbuhanpi.baidu.sdk.face.config.property.BaiduFaceConfigurationProperties;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;

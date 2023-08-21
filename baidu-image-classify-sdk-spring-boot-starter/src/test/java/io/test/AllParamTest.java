@@ -2,7 +2,7 @@ package io.test;
 
 import io.App;
 import com.baidu.aip.imageclassify.AipImageClassify;
-import io.github.hanpijunbuhanpi.baidu.sdk.config.property.BaiduImageClassifyConfigurationProperties;
+import io.github.hanpijunbuhanpi.baidu.sdk.imageclassify.config.property.BaiduImageClassifyConfigurationProperties;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;

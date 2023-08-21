@@ -2,7 +2,7 @@ package io.test;
 
 import io.App;
 import com.baidu.aip.imageprocess.AipImageProcess;
-import io.github.hanpijunbuhanpi.baidu.sdk.config.property.BaiduImageProcessConfigurationProperties;
+import io.github.hanpijunbuhanpi.baidu.sdk.imageprocess.config.property.BaiduImageProcessConfigurationProperties;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;

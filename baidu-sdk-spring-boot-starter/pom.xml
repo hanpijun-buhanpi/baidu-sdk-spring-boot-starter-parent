@@ -20,4 +20,59 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
 
+    <dependencies>
+        <dependency>
+            <groupId>io.github.hanpijun-buhanpi</groupId>
+            <artifactId>baidu-sdk-common</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>io.github.hanpijun-buhanpi</groupId>
+            <artifactId>baidu-body-analysis-sdk-spring-boot-starter</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>io.github.hanpijun-buhanpi</groupId>
+            <artifactId>baidu-content-censor-sdk-spring-boot-starter</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>io.github.hanpijun-buhanpi</groupId>
+            <artifactId>baidu-easy-dl-sdk-spring-boot-starter</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>io.github.hanpijun-buhanpi</groupId>
+            <artifactId>baidu-face-sdk-spring-boot-starter</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>io.github.hanpijun-buhanpi</groupId>
+            <artifactId>baidu-image-classify-sdk-spring-boot-starter</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>io.github.hanpijun-buhanpi</groupId>
+            <artifactId>baidu-image-process-sdk-spring-boot-starter</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>io.github.hanpijun-buhanpi</groupId>
+            <artifactId>baidu-image-search-sdk-spring-boot-starter</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>io.github.hanpijun-buhanpi</groupId>
+            <artifactId>baidu-kg-sdk-spring-boot-starter</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>io.github.hanpijun-buhanpi</groupId>
+            <artifactId>baidu-machine-translation-sdk-spring-boot-starter</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>io.github.hanpijun-buhanpi</groupId>
+            <artifactId>baidu-nlp-sdk-spring-boot-starter</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>io.github.hanpijun-buhanpi</groupId>
+            <artifactId>baidu-ocr-sdk-spring-boot-starter</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>io.github.hanpijun-buhanpi</groupId>
+            <artifactId>baidu-speech-sdk-spring-boot-starter</artifactId>
+        </dependency>
+    </dependencies>
+
 </project>

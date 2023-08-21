@@ -1,3 +1,3 @@
 # Auto Configuration Import
 org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
-io.github.hanpijunbuhanpi.baidu.sdk.config.BaiduContentCensorSdkAutoConfiguration
+io.github.hanpijunbuhanpi.baidu.sdk.contentcensor.config.BaiduContentCensorSdkAutoConfiguration

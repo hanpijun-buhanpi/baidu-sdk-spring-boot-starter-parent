@@ -2,7 +2,7 @@ package io.test;
 
 import io.App;
 import com.baidu.aip.nlp.AipNlp;
-import io.github.hanpijunbuhanpi.baidu.sdk.config.property.BaiduNlpConfigurationProperties;
+import io.github.hanpijunbuhanpi.baidu.sdk.nlp.config.property.BaiduNlpConfigurationProperties;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;

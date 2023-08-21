@@ -2,7 +2,7 @@ package io.test;
 
 import io.App;
 import com.baidu.aip.machinetranslation.Machinetranslation;
-import io.github.hanpijunbuhanpi.baidu.sdk.config.property.BaiduMachineTranslationConfigurationProperties;
+import io.github.hanpijunbuhanpi.baidu.sdk.machinetranslation.config.property.BaiduMachineTranslationConfigurationProperties;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;

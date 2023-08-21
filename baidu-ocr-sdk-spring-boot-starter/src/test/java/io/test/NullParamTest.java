@@ -2,7 +2,7 @@ package io.test;
 
 import io.App;
 import com.baidu.aip.ocr.AipOcr;
-import io.github.hanpijunbuhanpi.baidu.sdk.config.property.BaiduOcrConfigurationProperties;
+import io.github.hanpijunbuhanpi.baidu.sdk.ocr.config.property.BaiduOcrConfigurationProperties;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;

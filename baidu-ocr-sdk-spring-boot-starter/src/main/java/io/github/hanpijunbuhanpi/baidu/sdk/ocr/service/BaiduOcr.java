@@ -4,6 +4,7 @@ import com.baidu.aip.ocr.AipOcr;
 import io.github.hanpijunbuhanpi.baidu.sdk.common.service.BaiduClient;
 import io.github.hanpijunbuhanpi.baidu.sdk.ocr.entity.request.IdCardRequest;
 import io.github.hanpijunbuhanpi.baidu.sdk.ocr.entity.response.IdCardResponse;
+import io.github.hanpijunbuhanpi.baidu.sdk.ocr.entity.response.MultiIdCardResponse;
 import io.github.hanpijunbuhanpi.baidu.sdk.ocr.enumerate.IdCardSide;
 
 /**
@@ -43,5 +44,44 @@ public class BaiduOcr extends BaiduClient<AipOcr> {
      */
     public IdCardResponse idcard(String image, IdCardSide idCardSide, IdCardRequest options) {
         return baiduBeanService.buildResponse(client.idcard(image, idCardSide.value, baiduBeanService.buildStringOptions(options)), IdCardResponse.class);
+    }
+
+    /**
+     * 身份证混贴识别
+     * https://ai.baidu.com/ai-doc/OCR/akp3gfbmc
+     *
+     * @param image   - 二进制图像数据
+     * @param options - 可选参数对象，key: value都为string类型
+     *                https://ai.baidu.com/ai-doc/OCR/akp3gfbmc#%E8%AF%B7%E6%B1%82%E8%AF%B4%E6%98%8E
+     * @return JSONObject
+     */
+    public MultiIdCardResponse multiIdcard(byte[] image, IdCardRequest options) {
+        return baiduBeanService.buildResponse(client.multiIdcard(image, baiduBeanService.buildObjectOptions(options)), MultiIdCardResponse.class);
+    }
+
+    /**
+     * 身份证混贴识别
+     * https://ai.baidu.com/ai-doc/OCR/akp3gfbmc
+     *
+     * @param image   - 图片路径
+     * @param options - 可选参数对象，key: value都为string类型
+     *                https://ai.baidu.com/ai-doc/OCR/akp3gfbmc#%E8%AF%B7%E6%B1%82%E8%AF%B4%E6%98%8E
+     * @return JSONObject
+     */
+    public MultiIdCardResponse multiIdcard(String image, IdCardRequest options) {
+        return baiduBeanService.buildResponse(client.multiIdcard(image, baiduBeanService.buildObjectOptions(options)), MultiIdCardResponse.class);
+    }
+
+    /**
+     * 身份证混贴识别
+     * https://ai.baidu.com/ai-doc/OCR/akp3gfbmc
+     *
+     * @param url     - 图片完整url
+     * @param options - 可选参数对象，key: value都为string类型
+     *                https://ai.baidu.com/ai-doc/OCR/akp3gfbmc#%E8%AF%B7%E6%B1%82%E8%AF%B4%E6%98%8E
+     * @return JSONObject
+     */
+    public MultiIdCardResponse multiIdcardUrl(String url, IdCardRequest options) {
+        return baiduBeanService.buildResponse(client.multiIdcardUrl(url, baiduBeanService.buildObjectOptions(options)), MultiIdCardResponse.class);
     }
 }

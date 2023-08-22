@@ -3,7 +3,6 @@ package io.github.hanpijunbuhanpi.baidu.sdk.common.service.impl;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import io.github.hanpijunbuhanpi.baidu.sdk.common.entity.response.BaseBaiduResponse;
 import io.github.hanpijunbuhanpi.baidu.sdk.common.exception.OptionsBuildException;
 import io.github.hanpijunbuhanpi.baidu.sdk.common.exception.ResponseBuildException;
 import io.github.hanpijunbuhanpi.baidu.sdk.common.service.BaiduBeanService;
@@ -27,10 +26,26 @@ public class BaiduBeanServiceJacksonImpl implements BaiduBeanService {
      * @return 可选项
      */
     @Override
-    public HashMap<String, String> buildOptions(Object request) {
+    public HashMap<String, String> buildStringOptions(Object request) {
         try {
             String json = objectMapper.writeValueAsString(request);
             return objectMapper.readValue(json, new TypeReference<HashMap<String, String>>() {});
+        } catch (JsonProcessingException e) {
+            throw new OptionsBuildException(e);
+        }
+    }
+
+    /**
+     * 构建可选项
+     *
+     * @param request 请求对象
+     * @return 可选项
+     */
+    @Override
+    public HashMap<String, Object> buildObjectOptions(Object request) {
+        try {
+            String json = objectMapper.writeValueAsString(request);
+            return objectMapper.readValue(json, new TypeReference<HashMap<String, Object>>() {});
         } catch (JsonProcessingException e) {
             throw new OptionsBuildException(e);
         }
@@ -44,7 +59,7 @@ public class BaiduBeanServiceJacksonImpl implements BaiduBeanService {
      * @return 返回
      */
     @Override
-    public <T extends BaseBaiduResponse> T buildResponse(JSONObject jsonObject, Class<T> type) {
+    public <T> T buildResponse(JSONObject jsonObject, Class<T> type) {
         try {
             return objectMapper.readValue(jsonObject.toString(), type);
         } catch (JsonProcessingException e) {

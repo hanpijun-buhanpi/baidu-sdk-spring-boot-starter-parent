@@ -1,6 +1,5 @@
 package io.github.hanpijunbuhanpi.baidu.sdk.common.service;
 
-import io.github.hanpijunbuhanpi.baidu.sdk.common.entity.response.BaseBaiduResponse;
 import org.json.JSONObject;
 
 import java.util.HashMap;
@@ -18,7 +17,15 @@ public interface BaiduBeanService {
      * @param request 请求对象
      * @return 可选项
      */
-    HashMap<String, String> buildOptions(Object request);
+    HashMap<String, String> buildStringOptions(Object request);
+
+    /**
+     * 构建可选项
+     *
+     * @param request 请求对象
+     * @return 可选项
+     */
+    HashMap<String, Object> buildObjectOptions(Object request);
 
     /**
      * 构建返回
@@ -28,5 +35,5 @@ public interface BaiduBeanService {
      * @return 返回
      * @param <T> 构建的类型
      */
-    <T extends BaseBaiduResponse> T buildResponse(JSONObject jsonObject, Class<T> type);
+    <T> T buildResponse(JSONObject jsonObject, Class<T> type);
 }

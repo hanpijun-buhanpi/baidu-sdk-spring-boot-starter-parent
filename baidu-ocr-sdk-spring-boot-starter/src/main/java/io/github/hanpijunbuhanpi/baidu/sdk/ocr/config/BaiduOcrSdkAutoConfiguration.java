@@ -1,6 +1,7 @@
 package io.github.hanpijunbuhanpi.baidu.sdk.ocr.config;
 
 import com.baidu.aip.ocr.AipOcr;
+import com.baidu.aip.ocr.AipOcrExtend;
 import io.github.hanpijunbuhanpi.baidu.sdk.common.config.BaseBaiduSdkAutoConfiguration;
 import io.github.hanpijunbuhanpi.baidu.sdk.common.config.property.BaiduGlobalConfigurationProperties;
 import io.github.hanpijunbuhanpi.baidu.sdk.ocr.config.property.BaiduOcrConfigurationProperties;
@@ -32,7 +33,7 @@ public class BaiduOcrSdkAutoConfiguration extends BaseBaiduSdkAutoConfiguration 
     @ConditionalOnProperty(prefix = "baidu-sdk.ocr", name = "enable", havingValue = "true", matchIfMissing = true)
     @ConditionalOnMissingBean(AipOcr.class)
     public AipOcr aipOcr(BaiduGlobalConfigurationProperties global, BaiduOcrConfigurationProperties properties) {
-        return super.init(global, properties, AipOcr.class,"百度文字识别配置：");
+        return super.init(global, properties, AipOcrExtend.class,"百度文字识别配置：");
     }
 
     /**

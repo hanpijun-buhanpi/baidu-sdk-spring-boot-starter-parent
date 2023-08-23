@@ -32,6 +32,13 @@ public class OcrRequestTest {
     }
 
     @Test
+    public void idcardUrl() throws Exception {
+        IdCardRequest idCardRequest = new IdCardRequest(true, true, true, true, true);
+        IdCardResponse idcard = baiduOcr.idcardUrl("http://5b0988e595225.cdn.sohucs.com/images/20171215/97fd34a8029a42bbac0642661d45a8d8.jpeg", IdCardSide.FRONT, idCardRequest);
+        System.out.println(objectMapper.writeValueAsString(idcard));
+    }
+
+    @Test
     public void idcardAes() throws Exception {
         IdCardRequest idCardRequest = new IdCardRequest(true, true, true, true, true);
         IdCardResponse idcard = baiduOcr.idcardAes("C:\\Users\\Administrator\\Desktop\\123412341234.jpg", IdCardSide.FRONT, idCardRequest);

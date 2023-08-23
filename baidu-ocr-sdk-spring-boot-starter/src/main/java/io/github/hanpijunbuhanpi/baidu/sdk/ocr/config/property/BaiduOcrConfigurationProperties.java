@@ -19,5 +19,8 @@ import org.springframework.context.annotation.Configuration;
 @Configuration
 @ConfigurationProperties(prefix = "baidu-sdk.ocr")
 public class BaiduOcrConfigurationProperties extends BaseBaiduConfigurationProperties {
-
+    /**
+     * AES密钥
+     */
+    private String aesKey = null;
 }

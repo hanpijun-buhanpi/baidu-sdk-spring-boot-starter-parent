@@ -3,3 +3,4 @@ baidu-sdk:
     app-id: 111
     api-key: 222
     secret-key: 333
+    aes-key: 444

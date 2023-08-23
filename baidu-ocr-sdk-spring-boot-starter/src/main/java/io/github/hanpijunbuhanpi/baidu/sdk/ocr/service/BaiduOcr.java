@@ -1,23 +1,14 @@
 package io.github.hanpijunbuhanpi.baidu.sdk.ocr.service;
 
-import com.baidu.aip.error.AipError;
 import com.baidu.aip.ocr.AipOcr;
 import com.baidu.aip.ocr.AipOcrExtend;
-import com.baidu.aip.util.Base64Util;
-import com.baidu.aip.util.Util;
 import io.github.hanpijunbuhanpi.baidu.sdk.common.service.BaiduClient;
 import io.github.hanpijunbuhanpi.baidu.sdk.ocr.config.property.BaiduOcrConfigurationProperties;
 import io.github.hanpijunbuhanpi.baidu.sdk.ocr.entity.request.IdCardRequest;
 import io.github.hanpijunbuhanpi.baidu.sdk.ocr.entity.response.IdCardResponse;
 import io.github.hanpijunbuhanpi.baidu.sdk.ocr.entity.response.MultiIdCardResponse;
 import io.github.hanpijunbuhanpi.baidu.sdk.ocr.enumerate.IdCardSide;
-import io.github.hanpijunbuhanpi.baidu.sdk.common.util.AesUtil;
-import org.json.JSONException;
-import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
-
-import java.io.IOException;
-import java.util.HashMap;
 
 /**
  * 百度文字识别
@@ -27,7 +18,7 @@ import java.util.HashMap;
  */
 public class BaiduOcr extends BaiduClient<AipOcr> {
     @Autowired
-    private BaiduOcrConfigurationProperties ocrConfigurationProperties;
+    private BaiduOcrConfigurationProperties properties;
 
     /**
      * 身份证识别接口
@@ -90,23 +81,9 @@ public class BaiduOcr extends BaiduClient<AipOcr> {
      * @return JSONObject
      */
     public IdCardResponse idcardAes(byte[] image, IdCardSide idCardSide, IdCardRequest options) {
-        // 加密图片
-        String aesKey = ocrConfigurationProperties.getAesKey();
-        byte[] bytes = AesUtil.ecbEncrypt(image, aesKey);
-        // 添加可选项：使用AES加密
-        HashMap<String, String> map = baiduBeanService.buildStringOptions(options);
-        map.put("AESEncry", "true");
-        // 发起请求
-        JSONObject jsonObject = client.idcard(bytes, idCardSide.value, map);
-        // 解析返回
-        try {
-            String result = new String(AesUtil.ecbDecrypt(Base64Util.decode(jsonObject.getString("result")), aesKey));
-            IdCardResponse idCardResponse = baiduBeanService.buildResponse(new JSONObject(result), IdCardResponse.class);
-            idCardResponse.setLogId(jsonObject.getLong("log_id"));
-            return idCardResponse;
-        } catch (JSONException e) {
-            return baiduBeanService.buildResponse(jsonObject, IdCardResponse.class);
-        }
+        return baiduBeanService.buildResponse(
+                ((AipOcrExtend) client).idcardAes(image, properties.getAesKey(), idCardSide.value, baiduBeanService.buildStringOptions(options)),
+                IdCardResponse.class);
     }
 
     /**
@@ -122,13 +99,9 @@ public class BaiduOcr extends BaiduClient<AipOcr> {
      * @return JSONObject
      */
     public IdCardResponse idcardAes(String image, IdCardSide idCardSide, IdCardRequest options) {
-        try {
-            byte[] data = Util.readFileByBytes(image);
-            return idcardAes(data, idCardSide, options);
-        } catch (IOException e) {
-            e.printStackTrace();
-            return baiduBeanService.buildResponse(AipError.IMAGE_READ_ERROR.toJsonResult(), IdCardResponse.class);
-        }
+        return baiduBeanService.buildResponse(
+                ((AipOcrExtend) client).idcardAes(image, properties.getAesKey(), idCardSide.value, baiduBeanService.buildStringOptions(options)),
+                IdCardResponse.class);
     }
 
     /**

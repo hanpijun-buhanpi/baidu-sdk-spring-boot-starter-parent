@@ -7,7 +7,7 @@
     <parent>
         <groupId>io.github.hanpijun-buhanpi</groupId>
         <artifactId>baidu-sdk-spring-boot-starter-parent</artifactId>
-        <version>2.0</version>
+        <version>2.1</version>
     </parent>
 
     <artifactId>baidu-image-classify-sdk-spring-boot-starter</artifactId>

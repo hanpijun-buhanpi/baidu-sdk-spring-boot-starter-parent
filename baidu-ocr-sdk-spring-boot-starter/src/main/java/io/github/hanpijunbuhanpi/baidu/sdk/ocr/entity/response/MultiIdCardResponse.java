@@ -1,13 +1,14 @@
 package io.github.hanpijunbuhanpi.baidu.sdk.ocr.entity.response;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import io.github.hanpijunbuhanpi.baidu.sdk.common.entity.response.BaseBaiduResponse;
 import io.github.hanpijunbuhanpi.baidu.sdk.ocr.entity.MultiIdCardWordsResult;
 import lombok.Data;
-import lombok.EqualsAndHashCode;
-import lombok.ToString;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
  * 身份证混贴识别返回（同时识别正反面）
@@ -16,9 +17,11 @@ import java.util.List;
  * @since 2023/8/21 16:52
  */
 @Data
-@ToString(callSuper = true)
-@EqualsAndHashCode(callSuper = true)
-public class MultiIdCardResponse extends BaseBaiduResponse {
+public class MultiIdCardResponse implements BaseBaiduResponse {
+    /** 属性容器 */
+    @JsonIgnore
+    private final Map<String, Object> map = new HashMap<>(3);
+
     /**
      * 定位和识别结果数组
      */

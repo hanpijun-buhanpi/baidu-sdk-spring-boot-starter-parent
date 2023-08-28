@@ -1,6 +1,8 @@
 package io.github.hanpijunbuhanpi.baidu.sdk.ocr.enumerate;
 
+import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
+import io.github.hanpijunbuhanpi.baidu.sdk.common.exception.NotFoundEnumException;
 
 /**
  * 身份证图片状态
@@ -32,6 +34,16 @@ public enum ImageStatus {
      */
     @JsonValue
     public final String value;
+
+    @JsonCreator
+    public static ImageStatus parse(String value) {
+        for (ImageStatus imageStatus : values()) {
+            if (imageStatus.value.equals(value)) {
+                return imageStatus;
+            }
+        }
+        throw new NotFoundEnumException();
+    }
 
     /**
      * 描述

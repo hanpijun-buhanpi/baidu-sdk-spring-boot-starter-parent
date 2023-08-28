@@ -1,6 +1,8 @@
 package io.github.hanpijunbuhanpi.baidu.sdk.ocr.enumerate;
 
+import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
+import io.github.hanpijunbuhanpi.baidu.sdk.common.exception.NotFoundEnumException;
 
 /**
  * 方向
@@ -26,6 +28,16 @@ public enum Direction {
      */
     @JsonValue
     public final int value;
+
+    @JsonCreator
+    public static Direction parse(int value) {
+        for (Direction direction : values()) {
+            if (direction.value == value) {
+                return direction;
+            }
+        }
+        throw new NotFoundEnumException();
+    }
 
     /**
      * 描述

@@ -1,37 +1,79 @@
 package io.github.hanpijunbuhanpi.baidu.sdk.common.entity.response;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import io.github.hanpijunbuhanpi.baidu.sdk.common.entity.BaseEntity;
 
 /**
  * 基础百度返回
  *
  * @author lyc
- * @since 2023/8/18 18:38
+ * @since 2.2
  */
-@Data
-@NoArgsConstructor
-@AllArgsConstructor
-@Builder
-public class BaseBaiduResponse {
+public interface BaseBaiduResponse extends BaseEntity {
+    /** log_id */
+    String LOG_ID = "log_id";
+    /** 错误码 */
+    String ERROR_CODE = "error_code";
+    /** 错误描述信息，帮助理解和解决发生的错误 */
+    String ERROR_MSG = "error_msg";
+
     /**
      * 唯一的log id，用于问题定位
+     *
+     * @return log_id
      */
-    @JsonProperty("log_id")
-    private Long logId;
+    @JsonProperty(LOG_ID)
+    default Long getLogId() {
+        return getValue(LOG_ID, Long.class);
+    }
+
+    /**
+     * 唯一的log id，用于问题定位
+     *
+     * @param logId log_id
+     */
+    @JsonProperty(LOG_ID)
+    default void setLogId(long logId) {
+        getMap().put(LOG_ID, logId);
+    }
 
     /**
      * 错误码
+     *
+     * @return 错误码
      */
-    @JsonProperty("error_code")
-    private Integer errorCode;
+    @JsonProperty(ERROR_CODE)
+    default Integer getErrorCode() {
+        return getValue(ERROR_CODE, Integer.class);
+    }
+
+    /**
+     * 错误码
+     *
+     * @param errorCode 错误码
+     */
+    @JsonProperty(ERROR_CODE)
+    default void setErrorCode(int errorCode) {
+        getMap().put(ERROR_CODE, errorCode);
+    }
 
     /**
      * 错误描述信息，帮助理解和解决发生的错误
+     *
+     * @return 错误描述信息
      */
-    @JsonProperty("error_msg")
-    private String errorMsg;
+    @JsonProperty(ERROR_MSG)
+    default String getErrorMsg() {
+        return getValue(ERROR_MSG, String.class);
+    }
+
+    /**
+     * 错误描述信息，帮助理解和解决发生的错误
+     *
+     * @param errorMsg 错误描述信息
+     */
+    @JsonProperty(ERROR_MSG)
+    default void setErrorMsg(String errorMsg) {
+        getMap().put(ERROR_MSG, errorMsg);
+    }
 }

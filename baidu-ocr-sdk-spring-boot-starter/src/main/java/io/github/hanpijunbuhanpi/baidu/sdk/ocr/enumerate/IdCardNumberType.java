@@ -1,6 +1,8 @@
 package io.github.hanpijunbuhanpi.baidu.sdk.ocr.enumerate;
 
+import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
+import io.github.hanpijunbuhanpi.baidu.sdk.common.exception.NotFoundEnumException;
 
 /**
  * 身份证对应关系
@@ -31,6 +33,16 @@ public enum IdCardNumberType {
      */
     @JsonValue
     public final int value;
+
+    @JsonCreator
+    public static IdCardNumberType parse(int value) {
+        for (IdCardNumberType idCardNumberType : values()) {
+            if (idCardNumberType.value == value) {
+                return idCardNumberType;
+            }
+        }
+        throw new NotFoundEnumException();
+    }
 
     /**
      * 描述

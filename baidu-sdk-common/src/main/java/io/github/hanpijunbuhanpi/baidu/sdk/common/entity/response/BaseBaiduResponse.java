@@ -43,8 +43,8 @@ public interface BaseBaiduResponse extends BaseEntity {
      * @return 错误码
      */
     @JsonProperty(ERROR_CODE)
-    default Integer getErrorCode() {
-        return getValue(ERROR_CODE, Integer.class);
+    default String getErrorCode() {
+        return getValue(ERROR_CODE, String.class);
     }
 
     /**
@@ -53,7 +53,7 @@ public interface BaseBaiduResponse extends BaseEntity {
      * @param errorCode 错误码
      */
     @JsonProperty(ERROR_CODE)
-    default void setErrorCode(int errorCode) {
+    default void setErrorCode(String errorCode) {
         getMap().put(ERROR_CODE, errorCode);
     }
 

@@ -60,9 +60,9 @@ public class BaseBaiduConfigurationProperties {
      * @param tipPrefix 提示前缀
      */
     public void check(String tipPrefix) {
-        Assert.isTrue(appId != null, tipPrefix + " App Id 不能为空");
-        Assert.isTrue(apiKey != null, tipPrefix + " Api Key 不能为空");
-        Assert.isTrue(secretKey != null, tipPrefix + " Secret Key 不能为空");
+        Assert.isTrue(appId != null && !"".equals(appId.trim()), tipPrefix + " App Id 不能为空");
+        Assert.isTrue(apiKey != null && !"".equals(apiKey.trim()), tipPrefix + " Api Key 不能为空");
+        Assert.isTrue(secretKey != null && !"".equals(secretKey.trim()), tipPrefix + " Secret Key 不能为空");
         Assert.isTrue(connectTimeout == null || connectTimeout > -1, tipPrefix + " Connect Timeout 不能为负数");
         Assert.isTrue(socketTimeout == null || socketTimeout > -1, tipPrefix + " Socket Timeout 不能为负数");
         if (proxyType != null) {

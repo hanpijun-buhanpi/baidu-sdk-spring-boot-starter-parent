@@ -3,7 +3,7 @@ package io.github.hanpijunbuhanpi.baidu.sdk.common.exception;
 /**
  * 百度客户端初始化异常
  *
- * @author lyc
+ * @author hanpijun-buhanpi
  * @since 2.2
  */
 public class BaiduClientInitException extends RuntimeException {

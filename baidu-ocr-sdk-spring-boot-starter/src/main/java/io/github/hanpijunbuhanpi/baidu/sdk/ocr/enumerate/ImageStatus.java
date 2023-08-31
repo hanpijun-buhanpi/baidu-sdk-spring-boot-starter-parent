@@ -7,8 +7,8 @@ import io.github.hanpijunbuhanpi.baidu.sdk.common.exception.NotFoundEnumExceptio
 /**
  * 身份证图片状态
  *
- * @author lyc
- * @since 2023/8/19 15:24
+ * @author hanpijun-buhanpi
+ * @since 2.1
  */
 public enum ImageStatus {
     /** 识别正常 */

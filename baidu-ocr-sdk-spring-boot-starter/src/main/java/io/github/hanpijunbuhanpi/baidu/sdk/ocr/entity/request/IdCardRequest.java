@@ -9,8 +9,8 @@ import lombok.NoArgsConstructor;
 /**
  * 身份证识别请求
  *
- * @author lyc
- * @since 2023/8/21 13:54
+ * @author hanpijun-buhanpi
+ * @since 2.1
  */
 @Data
 @NoArgsConstructor

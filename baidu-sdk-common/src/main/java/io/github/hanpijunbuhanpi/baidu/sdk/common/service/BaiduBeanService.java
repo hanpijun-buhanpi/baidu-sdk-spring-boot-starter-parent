@@ -7,8 +7,8 @@ import java.util.HashMap;
 /**
  * 百度Bean服务
  *
- * @author lyc
- * @since 2023/8/18 18:35
+ * @author hanpijun-buhanpi
+ * @since 2.1
  */
 public interface BaiduBeanService {
     /**
@@ -16,6 +16,8 @@ public interface BaiduBeanService {
      *
      * @param request 请求对象
      * @return 可选项
+     *
+     * @since 2.1
      */
     HashMap<String, String> buildStringOptions(Object request);
 
@@ -24,6 +26,8 @@ public interface BaiduBeanService {
      *
      * @param request 请求对象
      * @return 可选项
+     *
+     * @since 2.1
      */
     HashMap<String, Object> buildObjectOptions(Object request);
 
@@ -34,6 +38,8 @@ public interface BaiduBeanService {
      * @param type 构建的类型
      * @return 返回
      * @param <T> 构建的类型
+     *
+     * @since 2.1
      */
     <T> T buildResponse(JSONObject jsonObject, Class<T> type);
 }

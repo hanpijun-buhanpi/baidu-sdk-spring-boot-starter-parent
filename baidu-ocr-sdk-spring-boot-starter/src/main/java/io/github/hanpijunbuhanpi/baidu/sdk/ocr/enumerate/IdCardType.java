@@ -7,8 +7,8 @@ import io.github.hanpijunbuhanpi.baidu.sdk.common.exception.NotFoundEnumExceptio
 /**
  * 身份证类型
  *
- * @author lyc
- * @since 2023/8/21 17:34
+ * @author hanpijun-buhanpi
+ * @since 2.1
  */
 public enum IdCardType {
     /** 身份证正面（头像面） */

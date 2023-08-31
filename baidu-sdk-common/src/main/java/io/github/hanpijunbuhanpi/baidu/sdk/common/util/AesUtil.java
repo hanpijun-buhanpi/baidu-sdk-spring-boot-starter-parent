@@ -13,8 +13,8 @@ import java.util.Base64;
 /**
  * AES加解密工具类
  *
- * @author lyc
- * @since 2023/7/3 14:07
+ * @author hanpijun-buhanpi
+ * @since 2.1
  */
 public class AesUtil {
     /** 十六进制 */

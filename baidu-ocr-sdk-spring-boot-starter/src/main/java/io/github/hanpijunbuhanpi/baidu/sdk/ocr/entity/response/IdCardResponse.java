@@ -15,8 +15,8 @@ import java.util.Map;
 /**
  * 身份证识别返回
  *
- * @author lyc
- * @since 2023/8/21 14:02
+ * @author hanpijun-buhanpi
+ * @since 2.1
  */
 @Data
 @ToString(callSuper = true)

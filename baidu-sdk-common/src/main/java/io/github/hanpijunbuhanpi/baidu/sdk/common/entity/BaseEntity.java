@@ -5,7 +5,7 @@ import java.util.Map;
 /**
  * 基础实体类
  *
- * @author lyc
+ * @author hanpijun-buhanpi
  * @since 2.2
  */
 public interface BaseEntity {

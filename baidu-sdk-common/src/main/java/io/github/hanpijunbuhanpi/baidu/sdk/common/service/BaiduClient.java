@@ -6,8 +6,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 /**
  * 百度客户端
  *
- * @author lyc
- * @since 2023/8/21 9:00
+ * @author hanpijun-buhanpi
+ * @since 2.0
  */
 public class BaiduClient<T extends BaseClient> {
     @Autowired

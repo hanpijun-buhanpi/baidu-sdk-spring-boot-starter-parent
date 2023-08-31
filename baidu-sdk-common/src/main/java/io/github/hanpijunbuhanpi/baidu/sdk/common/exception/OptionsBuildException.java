@@ -3,8 +3,8 @@ package io.github.hanpijunbuhanpi.baidu.sdk.common.exception;
 /**
  * 可选项构建异常
  *
- * @author lyc
- * @since 2023/8/19 14:52
+ * @author hanpijun-buhanpi
+ * @since 2.0
  */
 public class OptionsBuildException extends RuntimeException {
     public OptionsBuildException() {

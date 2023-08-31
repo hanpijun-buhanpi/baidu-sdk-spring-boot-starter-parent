@@ -13,8 +13,8 @@ import org.springframework.util.Assert;
 /**
  * 测试无配置
  *
- * @author lyc
- * @since 2023/8/16 16:44
+ * @author hanpijun-buhanpi
+ * @since 2.0
  */
 @SpringBootTest(classes = {App.class})
 @ActiveProfiles("test2")

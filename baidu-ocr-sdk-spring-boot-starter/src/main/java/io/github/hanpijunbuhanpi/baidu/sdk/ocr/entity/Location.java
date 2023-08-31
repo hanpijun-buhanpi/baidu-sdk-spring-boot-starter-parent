@@ -6,8 +6,8 @@ import lombok.Data;
 /**
  * 定位位置
  *
- * @author lyc
- * @since 2023/8/19 16:01
+ * @author hanpijun-buhanpi
+ * @since 2.1
  */
 @Data
 public class Location {

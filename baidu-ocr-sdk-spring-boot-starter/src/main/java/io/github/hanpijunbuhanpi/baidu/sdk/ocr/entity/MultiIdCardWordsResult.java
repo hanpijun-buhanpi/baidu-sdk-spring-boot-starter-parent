@@ -6,8 +6,8 @@ import lombok.Data;
 /**
  * 混贴身份证识别定位和识别结果集合对象
  *
- * @author lyc
- * @since 2023/8/21 17:29
+ * @author hanpijun-buhanpi
+ * @since 2.1
  */
 @Data
 public class MultiIdCardWordsResult {

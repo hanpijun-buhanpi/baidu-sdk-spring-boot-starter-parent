@@ -8,8 +8,8 @@ import java.net.Proxy;
 /**
  * 百度基础配置
  *
- * @author lyc
- * @since 2023/8/15 10:53
+ * @author hanpijun-buhanpi
+ * @since 2.0
  */
 @Data
 public class BaseBaiduConfigurationProperties {

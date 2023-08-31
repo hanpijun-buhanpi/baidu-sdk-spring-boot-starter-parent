@@ -15,8 +15,8 @@ import org.springframework.context.annotation.Import;
 /**
  * 百度文字识别SDK自动配置
  *
- * @author lyc
- * @since 2023/8/15 11:26
+ * @author hanpijun-buhanpi
+ * @since 2.0
  */
 @AutoConfiguration
 @Import({BaiduOcrConfigurationProperties.class})
@@ -28,6 +28,8 @@ public class BaiduOcrSdkAutoConfiguration extends BaseBaiduSdkAutoConfiguration 
      * @param global 全局配置
      * @param properties 指定配置
      * @return 百度文字识别客户端
+     *
+     * @since 2.0
      */
     @Bean
     @ConditionalOnProperty(prefix = "baidu-sdk.ocr", name = "enable", havingValue = "true", matchIfMissing = true)
@@ -40,6 +42,8 @@ public class BaiduOcrSdkAutoConfiguration extends BaseBaiduSdkAutoConfiguration 
      * 百度SDK Starter文字识别客户端
      *
      * @return 百度SDK Starter文字识别客户端
+     *
+     * @since 2.0
      */
     @Bean
     @ConditionalOnProperty(prefix = "baidu-sdk.ocr", name = "enable", havingValue = "true", matchIfMissing = true)

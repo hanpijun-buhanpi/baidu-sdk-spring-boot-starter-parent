@@ -3,7 +3,7 @@ package io.github.hanpijunbuhanpi.baidu.sdk.common.exception;
 /**
  * 找不到枚举值异常
  *
- * @author lyc
+ * @author hanpijun-buhanpi
  * @since 2.2
  */
 public class NotFoundEnumException extends RuntimeException {

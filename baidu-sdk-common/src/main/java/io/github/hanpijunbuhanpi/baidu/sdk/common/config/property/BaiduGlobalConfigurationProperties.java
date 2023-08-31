@@ -9,8 +9,8 @@ import org.springframework.context.annotation.Configuration;
 /**
  * 百度全局配置
  *
- * @author lyc
- * @since 2023/8/15 11:11
+ * @author hanpijun-buhanpi
+ * @since 2.0
  */
 @Data
 @ToString(callSuper = true)

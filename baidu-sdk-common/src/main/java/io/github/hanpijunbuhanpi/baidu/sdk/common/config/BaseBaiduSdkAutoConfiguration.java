@@ -19,7 +19,7 @@ import java.net.Proxy;
 /**
  * 百度SDK自动配置
  *
- * @author lyc
+ * @author hanpijun-buhanpi
  * @since 2.2
  */
 public class BaseBaiduSdkAutoConfiguration {

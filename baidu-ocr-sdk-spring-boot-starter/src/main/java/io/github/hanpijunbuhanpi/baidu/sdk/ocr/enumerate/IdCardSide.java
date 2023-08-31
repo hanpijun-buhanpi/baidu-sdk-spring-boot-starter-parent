@@ -7,8 +7,8 @@ import io.github.hanpijunbuhanpi.baidu.sdk.common.exception.NotFoundEnumExceptio
 /**
  * 身份证方面
  *
- * @author lyc
- * @since 2023/8/18 9:37
+ * @author hanpijun-buhanpi
+ * @since 2.1
  */
 public enum IdCardSide {
     /**

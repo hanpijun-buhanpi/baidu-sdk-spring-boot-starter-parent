@@ -7,8 +7,8 @@ import lombok.Data;
 /**
  * 身份证信息
  *
- * @author lyc
- * @since 2023/8/21 17:32
+ * @author hanpijun-buhanpi
+ * @since 2.1
  */
 @Data
 public class IdCardInfo {

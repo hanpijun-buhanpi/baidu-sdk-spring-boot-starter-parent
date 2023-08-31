@@ -7,8 +7,8 @@ import io.github.hanpijunbuhanpi.baidu.sdk.common.exception.NotFoundEnumExceptio
 /**
  * 身份证风险类型
  *
- * @author lyc
- * @since 2023/8/19 15:36
+ * @author hanpijun-buhanpi
+ * @since 2.1
  */
 public enum RiskType {
     /** 正常身份证 */

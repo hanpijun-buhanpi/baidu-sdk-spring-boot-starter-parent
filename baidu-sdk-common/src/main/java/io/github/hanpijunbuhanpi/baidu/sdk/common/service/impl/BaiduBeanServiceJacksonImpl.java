@@ -14,8 +14,8 @@ import java.util.HashMap;
 /**
  * 百度Bean服务实现类
  *
- * @author lyc
- * @since 2023/8/18 18:42
+ * @author hanpijun-buhanpi
+ * @since 2.1
  */
 public class BaiduBeanServiceJacksonImpl implements BaiduBeanService {
     private final ObjectMapper objectMapper;
@@ -30,6 +30,8 @@ public class BaiduBeanServiceJacksonImpl implements BaiduBeanService {
      *
      * @param request 请求对象
      * @return 可选项
+     *
+     * @since 2.1
      */
     @Override
     public HashMap<String, String> buildStringOptions(Object request) {
@@ -46,6 +48,8 @@ public class BaiduBeanServiceJacksonImpl implements BaiduBeanService {
      *
      * @param request 请求对象
      * @return 可选项
+     *
+     * @since 2.1
      */
     @Override
     public HashMap<String, Object> buildObjectOptions(Object request) {
@@ -63,6 +67,8 @@ public class BaiduBeanServiceJacksonImpl implements BaiduBeanService {
      * @param jsonObject 百度客户端返回的JSON对象
      * @param type       构建的类型
      * @return 返回
+     *
+     * @since 2.1
      */
     @Override
     public <T> T buildResponse(JSONObject jsonObject, Class<T> type) {

@@ -10,8 +10,8 @@ import org.springframework.context.annotation.Configuration;
 /**
  * 百度文字识别配置
  *
- * @author lyc
- * @since 2023/8/15 11:11
+ * @author hanpijun-buhanpi
+ * @since 2.1
  */
 @Data
 @ToString(callSuper = true)
@@ -21,6 +21,7 @@ import org.springframework.context.annotation.Configuration;
 public class BaiduOcrConfigurationProperties extends BaseBaiduConfigurationProperties {
     /**
      * AES密钥
+     * @since 2.1
      */
     private String aesKey = null;
 }

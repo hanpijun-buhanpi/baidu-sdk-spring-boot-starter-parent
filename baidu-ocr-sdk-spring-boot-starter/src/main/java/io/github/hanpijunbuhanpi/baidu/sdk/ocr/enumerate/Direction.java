@@ -7,8 +7,8 @@ import io.github.hanpijunbuhanpi.baidu.sdk.common.exception.NotFoundEnumExceptio
 /**
  * 方向
  *
- * @author lyc
- * @since 2023/8/19 15:17
+ * @author hanpijun-buhanpi
+ * @since 2.1
  */
 public enum Direction {
     /** -1 未定义 */

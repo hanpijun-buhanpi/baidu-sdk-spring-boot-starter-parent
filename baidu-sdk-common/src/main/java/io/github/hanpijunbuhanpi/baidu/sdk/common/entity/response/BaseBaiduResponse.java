@@ -6,7 +6,7 @@ import io.github.hanpijunbuhanpi.baidu.sdk.common.entity.BaseEntity;
 /**
  * 基础百度返回
  *
- * @author lyc
+ * @author hanpijun-buhanpi
  * @since 2.2
  */
 public interface BaseBaiduResponse extends BaseEntity {

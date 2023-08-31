@@ -6,8 +6,8 @@ import lombok.Data;
 /**
  * 证件质量
  *
- * @author lyc
- * @since 2023/8/19 15:41
+ * @author hanpijun-buhanpi
+ * @since 2.1
  */
 @Data
 public class CardQuality {

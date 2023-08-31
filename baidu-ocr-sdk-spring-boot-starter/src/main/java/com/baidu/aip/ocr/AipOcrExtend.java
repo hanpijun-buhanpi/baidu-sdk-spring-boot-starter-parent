@@ -10,6 +10,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.IOException;
+import java.nio.charset.StandardCharsets;
 import java.util.HashMap;
 
 /**
@@ -193,7 +194,7 @@ public class AipOcrExtend extends AipOcr {
 
         try {
             byte[] data = Base64Util.decode(jsonObject.getString("result"));
-            JSONObject result = new JSONObject(new String(AesUtil.ecbDecrypt(data, aesKey)));
+            JSONObject result = new JSONObject(new String(AesUtil.ecbDecrypt(data, aesKey), StandardCharsets.UTF_8));
             result.put("log_id", jsonObject.get("log_id"));
             return result;
         } catch (JSONException e) {

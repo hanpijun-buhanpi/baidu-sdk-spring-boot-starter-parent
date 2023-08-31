@@ -4,13 +4,13 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Data;
 
 /**
- * 识别结果
+ * 身份证识别结果
  *
- * @author lyc
- * @since 2023/8/19 16:04
+ * @author hanpijun-buhanpi
+ * @since 2.1
  */
 @Data
-public class Words {
+public class IdCardWords {
     /**
      * 定位位置
      */

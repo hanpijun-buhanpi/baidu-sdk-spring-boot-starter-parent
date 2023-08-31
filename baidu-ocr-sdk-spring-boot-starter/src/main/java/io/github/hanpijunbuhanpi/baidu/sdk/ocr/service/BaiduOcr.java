@@ -4,7 +4,9 @@ import com.baidu.aip.ocr.AipOcr;
 import com.baidu.aip.ocr.AipOcrExtend;
 import io.github.hanpijunbuhanpi.baidu.sdk.common.service.BaiduClient;
 import io.github.hanpijunbuhanpi.baidu.sdk.ocr.config.property.BaiduOcrConfigurationProperties;
+import io.github.hanpijunbuhanpi.baidu.sdk.ocr.entity.request.GeneralBasicRequest;
 import io.github.hanpijunbuhanpi.baidu.sdk.ocr.entity.request.IdCardRequest;
+import io.github.hanpijunbuhanpi.baidu.sdk.ocr.entity.response.GeneralBasicResponse;
 import io.github.hanpijunbuhanpi.baidu.sdk.ocr.entity.response.IdCardResponse;
 import io.github.hanpijunbuhanpi.baidu.sdk.ocr.entity.response.MultiIdCardResponse;
 import io.github.hanpijunbuhanpi.baidu.sdk.ocr.enumerate.IdCardSide;
@@ -13,12 +15,142 @@ import org.springframework.beans.factory.annotation.Autowired;
 /**
  * 百度文字识别
  *
- * @author lyc
- * @since 2023/8/18 9:40
+ * @author hanpijun-buhanpi
+ * @since 2.2
  */
 public class BaiduOcr extends BaiduClient<AipOcr> {
     @Autowired
     private BaiduOcrConfigurationProperties properties;
+
+    /**
+     * 通用文字识别接口
+     * 用户向服务请求识别某张图中的所有文字
+     *
+     * @param image   - 二进制图像数据
+     * @param options - 可选参数对象，key: value都为string类型
+     *                options - options列表:
+     *                language_type 识别语言类型，默认为CHN_ENG。可选值包括：<br>- CHN_ENG：中英文混合；<br>- ENG：英文；<br>- POR：葡萄牙语；<br>- FRE：法语；<br>- GER：德语；<br>- ITA：意大利语；<br>- SPA：西班牙语；<br>- RUS：俄语；<br>- JAP：日语；<br>- KOR：韩语；
+     *                detect_direction 是否检测图像朝向，默认不检测，即：false。朝向是指输入图像是正常方向、逆时针旋转90/180/270度。可选值包括:<br>- true：检测朝向；<br>- false：不检测朝向。
+     *                detect_language 是否检测语言，默认不检测。当前支持（中文、英语、日语、韩语）
+     *                probability 是否返回识别结果中每一行的置信度
+     * @return {@link GeneralBasicResponse}
+     * @since 2.2
+     */
+    public GeneralBasicResponse basicGeneral(byte[] image, GeneralBasicRequest options) {
+        return baiduBeanService.buildResponse(client.basicGeneral(image, baiduBeanService.buildStringOptions(options)), GeneralBasicResponse.class);
+    }
+
+    /**
+     * 通用文字识别接口
+     * 用户向服务请求识别某张图中的所有文字
+     *
+     * @param image   - 本地图片路径
+     * @param options - 可选参数对象，key: value都为string类型
+     *                options - options列表:
+     *                language_type 识别语言类型，默认为CHN_ENG。可选值包括：<br>- CHN_ENG：中英文混合；<br>- ENG：英文；<br>- POR：葡萄牙语；<br>- FRE：法语；<br>- GER：德语；<br>- ITA：意大利语；<br>- SPA：西班牙语；<br>- RUS：俄语；<br>- JAP：日语；<br>- KOR：韩语；
+     *                detect_direction 是否检测图像朝向，默认不检测，即：false。朝向是指输入图像是正常方向、逆时针旋转90/180/270度。可选值包括:<br>- true：检测朝向；<br>- false：不检测朝向。
+     *                detect_language 是否检测语言，默认不检测。当前支持（中文、英语、日语、韩语）
+     *                probability 是否返回识别结果中每一行的置信度
+     * @return {@link GeneralBasicResponse}
+     * @since 2.2
+     */
+    public GeneralBasicResponse basicGeneral(String image, GeneralBasicRequest options) {
+        return baiduBeanService.buildResponse(client.basicGeneral(image, baiduBeanService.buildStringOptions(options)), GeneralBasicResponse.class);
+    }
+
+    /**
+     * 通用文字识别接口
+     * 用户向服务请求识别某张图中的所有文字
+     *
+     * @param url     - 图片完整URL，URL长度不超过1024字节，URL对应的图片base64编码后大小不超过4M，最短边至少15px，最长边最大4096px,支持jpg/png/bmp格式，当image字段存在时url字段失效
+     * @param options - 可选参数对象，key: value都为string类型
+     *                options - options列表:
+     *                language_type 识别语言类型，默认为CHN_ENG。可选值包括：<br>- CHN_ENG：中英文混合；<br>- ENG：英文；<br>- POR：葡萄牙语；<br>- FRE：法语；<br>- GER：德语；<br>- ITA：意大利语；<br>- SPA：西班牙语；<br>- RUS：俄语；<br>- JAP：日语；<br>- KOR：韩语；
+     *                detect_direction 是否检测图像朝向，默认不检测，即：false。朝向是指输入图像是正常方向、逆时针旋转90/180/270度。可选值包括:<br>- true：检测朝向；<br>- false：不检测朝向。
+     *                detect_language 是否检测语言，默认不检测。当前支持（中文、英语、日语、韩语）
+     *                probability 是否返回识别结果中每一行的置信度
+     * @return {@link GeneralBasicResponse}
+     * @since 2.2
+     */
+    public GeneralBasicResponse basicGeneralUrl(String url, GeneralBasicRequest options) {
+        return baiduBeanService.buildResponse(client.basicGeneralUrl(url, baiduBeanService.buildStringOptions(options)), GeneralBasicResponse.class);
+    }
+
+    /**
+     * 通用文字识别接口
+     * 用户向服务请求识别PDF文件中某页的所有文字
+     *
+     * @param pdf     - 二进制PDF文件数据
+     * @param num     - PDF文件页码
+     * @param options - 可选参数对象，key: value都为string类型
+     *                options - options列表:
+     *                language_type 识别语言类型，默认为CHN_ENG。可选值包括：<br>- CHN_ENG：中英文混合；<br>- ENG：英文；<br>- POR：葡萄牙语；<br>- FRE：法语；<br>- GER：德语；<br>- ITA：意大利语；<br>- SPA：西班牙语；<br>- RUS：俄语；<br>- JAP：日语；<br>- KOR：韩语；
+     *                detect_direction 是否检测图像朝向，默认不检测，即：false。朝向是指输入图像是正常方向、逆时针旋转90/180/270度。可选值包括:<br>- true：检测朝向；<br>- false：不检测朝向。
+     *                detect_language 是否检测语言，默认不检测。当前支持（中文、英语、日语、韩语）
+     *                probability 是否返回识别结果中每一行的置信度
+     * @return {@link GeneralBasicResponse}
+     * @since 2.2
+     */
+    public GeneralBasicResponse basicGeneralPdf(byte[] pdf, int num, GeneralBasicRequest options) {
+        return baiduBeanService.buildResponse(((AipOcrExtend) client).basicGeneralPdf(pdf, num, baiduBeanService.buildStringOptions(options)), GeneralBasicResponse.class);
+    }
+
+    /**
+     * 通用文字识别接口
+     * 用户向服务请求识别PDF文件中某页的所有文字
+     *
+     * @param pdf     - 本地PDF文件路径
+     * @param num     - PDF文件页码
+     * @param options - 可选参数对象，key: value都为string类型
+     *                options - options列表:
+     *                language_type 识别语言类型，默认为CHN_ENG。可选值包括：<br>- CHN_ENG：中英文混合；<br>- ENG：英文；<br>- POR：葡萄牙语；<br>- FRE：法语；<br>- GER：德语；<br>- ITA：意大利语；<br>- SPA：西班牙语；<br>- RUS：俄语；<br>- JAP：日语；<br>- KOR：韩语；
+     *                detect_direction 是否检测图像朝向，默认不检测，即：false。朝向是指输入图像是正常方向、逆时针旋转90/180/270度。可选值包括:<br>- true：检测朝向；<br>- false：不检测朝向。
+     *                detect_language 是否检测语言，默认不检测。当前支持（中文、英语、日语、韩语）
+     *                probability 是否返回识别结果中每一行的置信度
+     * @return {@link GeneralBasicResponse}
+     * @since 2.2
+     */
+    public GeneralBasicResponse basicGeneralPdf(String pdf, int num, GeneralBasicRequest options) {
+        return baiduBeanService.buildResponse(((AipOcrExtend) client).basicGeneralPdf(pdf, num, baiduBeanService.buildStringOptions(options)), GeneralBasicResponse.class);
+    }
+
+    /**
+     * 通用文字识别接口
+     * 用户向服务请求识别OFD文件中某页的所有文字
+     *
+     * @param ofd     - 二进制OFD文件数据
+     * @param num     - OFD文件页码
+     * @param options - 可选参数对象，key: value都为string类型
+     *                options - options列表:
+     *                language_type 识别语言类型，默认为CHN_ENG。可选值包括：<br>- CHN_ENG：中英文混合；<br>- ENG：英文；<br>- POR：葡萄牙语；<br>- FRE：法语；<br>- GER：德语；<br>- ITA：意大利语；<br>- SPA：西班牙语；<br>- RUS：俄语；<br>- JAP：日语；<br>- KOR：韩语；
+     *                detect_direction 是否检测图像朝向，默认不检测，即：false。朝向是指输入图像是正常方向、逆时针旋转90/180/270度。可选值包括:<br>- true：检测朝向；<br>- false：不检测朝向。
+     *                detect_language 是否检测语言，默认不检测。当前支持（中文、英语、日语、韩语）
+     *                probability 是否返回识别结果中每一行的置信度
+     * @return {@link GeneralBasicResponse}
+     * @since 2.2
+     */
+    public GeneralBasicResponse basicGeneralOfd(byte[] ofd, int num, GeneralBasicRequest options) {
+        return baiduBeanService.buildResponse(((AipOcrExtend) client).basicGeneralOfd(ofd, num, baiduBeanService.buildStringOptions(options)), GeneralBasicResponse.class);
+    }
+
+    /**
+     * 通用文字识别接口
+     * 用户向服务请求识别OFD文件中某页的所有文字
+     *
+     * @param ofd     - 本地OFD文件路径
+     * @param num     - OFD文件页码
+     * @param options - 可选参数对象，key: value都为string类型
+     *                options - options列表:
+     *                language_type 识别语言类型，默认为CHN_ENG。可选值包括：<br>- CHN_ENG：中英文混合；<br>- ENG：英文；<br>- POR：葡萄牙语；<br>- FRE：法语；<br>- GER：德语；<br>- ITA：意大利语；<br>- SPA：西班牙语；<br>- RUS：俄语；<br>- JAP：日语；<br>- KOR：韩语；
+     *                detect_direction 是否检测图像朝向，默认不检测，即：false。朝向是指输入图像是正常方向、逆时针旋转90/180/270度。可选值包括:<br>- true：检测朝向；<br>- false：不检测朝向。
+     *                detect_language 是否检测语言，默认不检测。当前支持（中文、英语、日语、韩语）
+     *                probability 是否返回识别结果中每一行的置信度
+     * @return {@link GeneralBasicResponse}
+     * @since 2.2
+     */
+    public GeneralBasicResponse basicGeneralOfd(String ofd, int num, GeneralBasicRequest options) {
+        return baiduBeanService.buildResponse(((AipOcrExtend) client).basicGeneralOfd(ofd, num, baiduBeanService.buildStringOptions(options)), GeneralBasicResponse.class);
+    }
 
     /**
      * 身份证识别接口
@@ -30,7 +162,8 @@ public class BaiduOcr extends BaiduClient<AipOcr> {
      *                   options - options列表:
      *                   detect_direction 是否检测图像朝向，默认不检测，即：false。朝向是指输入图像是正常方向、逆时针旋转90/180/270度。可选值包括:<br>- true：检测朝向；<br>- false：不检测朝向。
      *                   detect_risk 是否开启身份证风险类型(身份证复印件、临时身份证、身份证翻拍、修改过的身份证)功能，默认不开启，即：false。可选值:true-开启；false-不开启
-     * @return JSONObject
+     * @return {@link IdCardResponse}
+     * @since 2.1
      */
     public IdCardResponse idcard(byte[] image, IdCardSide idCardSide, IdCardRequest options) {
         return baiduBeanService.buildResponse(client.idcard(image, idCardSide.value, baiduBeanService.buildStringOptions(options)), IdCardResponse.class);
@@ -46,7 +179,8 @@ public class BaiduOcr extends BaiduClient<AipOcr> {
      *                   options - options列表:
      *                   detect_direction 是否检测图像朝向，默认不检测，即：false。朝向是指输入图像是正常方向、逆时针旋转90/180/270度。可选值包括:<br>- true：检测朝向；<br>- false：不检测朝向。
      *                   detect_risk 是否开启身份证风险类型(身份证复印件、临时身份证、身份证翻拍、修改过的身份证)功能，默认不开启，即：false。可选值:true-开启；false-不开启
-     * @return JSONObject
+     * @return {@link IdCardResponse}
+     * @since 2.1
      */
     public IdCardResponse idcard(String image, IdCardSide idCardSide, IdCardRequest options) {
         return baiduBeanService.buildResponse(client.idcard(image, idCardSide.value, baiduBeanService.buildStringOptions(options)), IdCardResponse.class);
@@ -62,7 +196,8 @@ public class BaiduOcr extends BaiduClient<AipOcr> {
      *                   options - options列表:
      *                   detect_direction 是否检测图像朝向，默认不检测，即：false。朝向是指输入图像是正常方向、逆时针旋转90/180/270度。可选值包括:<br>- true：检测朝向；<br>- false：不检测朝向。
      *                   detect_risk 是否开启身份证风险类型(身份证复印件、临时身份证、身份证翻拍、修改过的身份证)功能，默认不开启，即：false。可选值:true-开启；false-不开启
-     * @return JSONObject
+     * @return {@link IdCardResponse}
+     * @since 2.1
      */
     public IdCardResponse idcardUrl(String url, IdCardSide idCardSide, IdCardRequest options) {
         return baiduBeanService.buildResponse(((AipOcrExtend) client).idcardUrl(url, idCardSide.value, baiduBeanService.buildStringOptions(options)), IdCardResponse.class);
@@ -78,7 +213,8 @@ public class BaiduOcr extends BaiduClient<AipOcr> {
      *                   options - options列表:
      *                   detect_direction 是否检测图像朝向，默认不检测，即：false。朝向是指输入图像是正常方向、逆时针旋转90/180/270度。可选值包括:<br>- true：检测朝向；<br>- false：不检测朝向。
      *                   detect_risk 是否开启身份证风险类型(身份证复印件、临时身份证、身份证翻拍、修改过的身份证)功能，默认不开启，即：false。可选值:true-开启；false-不开启
-     * @return JSONObject
+     * @return {@link IdCardResponse}
+     * @since 2.1
      */
     public IdCardResponse idcardAes(byte[] image, IdCardSide idCardSide, IdCardRequest options) {
         return baiduBeanService.buildResponse(
@@ -96,7 +232,8 @@ public class BaiduOcr extends BaiduClient<AipOcr> {
      *                   options - options列表:
      *                   detect_direction 是否检测图像朝向，默认不检测，即：false。朝向是指输入图像是正常方向、逆时针旋转90/180/270度。可选值包括:<br>- true：检测朝向；<br>- false：不检测朝向。
      *                   detect_risk 是否开启身份证风险类型(身份证复印件、临时身份证、身份证翻拍、修改过的身份证)功能，默认不开启，即：false。可选值:true-开启；false-不开启
-     * @return JSONObject
+     * @return {@link IdCardResponse}
+     * @since 2.1
      */
     public IdCardResponse idcardAes(String image, IdCardSide idCardSide, IdCardRequest options) {
         return baiduBeanService.buildResponse(
@@ -111,7 +248,8 @@ public class BaiduOcr extends BaiduClient<AipOcr> {
      * @param image   - 二进制图像数据
      * @param options - 可选参数对象，key: value都为string类型
      *                https://ai.baidu.com/ai-doc/OCR/akp3gfbmc#%E8%AF%B7%E6%B1%82%E8%AF%B4%E6%98%8E
-     * @return JSONObject
+     * @return {@link MultiIdCardResponse}
+     * @since 2.1
      */
     public MultiIdCardResponse multiIdcard(byte[] image, IdCardRequest options) {
         return baiduBeanService.buildResponse(client.multiIdcard(image, baiduBeanService.buildObjectOptions(options)), MultiIdCardResponse.class);
@@ -124,7 +262,8 @@ public class BaiduOcr extends BaiduClient<AipOcr> {
      * @param image   - 图片路径
      * @param options - 可选参数对象，key: value都为string类型
      *                https://ai.baidu.com/ai-doc/OCR/akp3gfbmc#%E8%AF%B7%E6%B1%82%E8%AF%B4%E6%98%8E
-     * @return JSONObject
+     * @return {@link MultiIdCardResponse}
+     * @since 2.1
      */
     public MultiIdCardResponse multiIdcard(String image, IdCardRequest options) {
         return baiduBeanService.buildResponse(client.multiIdcard(image, baiduBeanService.buildObjectOptions(options)), MultiIdCardResponse.class);
@@ -137,7 +276,8 @@ public class BaiduOcr extends BaiduClient<AipOcr> {
      * @param url     - 图片完整url
      * @param options - 可选参数对象，key: value都为string类型
      *                https://ai.baidu.com/ai-doc/OCR/akp3gfbmc#%E8%AF%B7%E6%B1%82%E8%AF%B4%E6%98%8E
-     * @return JSONObject
+     * @return {@link MultiIdCardResponse}
+     * @since 2.1
      */
     public MultiIdCardResponse multiIdcardUrl(String url, IdCardRequest options) {
         return baiduBeanService.buildResponse(client.multiIdcardUrl(url, baiduBeanService.buildObjectOptions(options)), MultiIdCardResponse.class);

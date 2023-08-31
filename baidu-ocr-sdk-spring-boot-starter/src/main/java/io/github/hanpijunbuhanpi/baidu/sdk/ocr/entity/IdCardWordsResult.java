@@ -6,8 +6,8 @@ import lombok.Data;
 /**
  * 身份证识别定位和识别结果集合对象
  *
- * @author lyc
- * @since 2023/8/21 14:07
+ * @author hanpijun-buhanpi
+ * @since 2.1
  */
 @Data
 public class IdCardWordsResult {
@@ -15,53 +15,53 @@ public class IdCardWordsResult {
      * 住址
      */
     @JsonProperty("住址")
-    private Words address;
+    private IdCardWords address;
 
     /**
      * 公民身份号码
      */
     @JsonProperty("公民身份号码")
-    private Words idCardNumber;
+    private IdCardWords idCardNumber;
 
     /**
      * 出生
      */
     @JsonProperty("出生")
-    private Words birthday;
+    private IdCardWords birthday;
 
     /**
      * 姓名
      */
     @JsonProperty("姓名")
-    private Words name;
+    private IdCardWords name;
 
     /**
      * 性别
      */
     @JsonProperty("性别")
-    private Words gender;
+    private IdCardWords gender;
 
     /**
      * 民族
      */
     @JsonProperty("民族")
-    private Words nationality;
+    private IdCardWords nationality;
 
     /**
      * 签发机关
      */
     @JsonProperty("签发机关")
-    private Words issueAuthority;
+    private IdCardWords issueAuthority;
 
     /**
      * 签发日期
      */
     @JsonProperty("签发日期")
-    private Words issueDate;
+    private IdCardWords issueDate;
 
     /**
      * 失效日期
      */
     @JsonProperty("失效日期")
-    private Words expireDate;
+    private IdCardWords expireDate;
 }

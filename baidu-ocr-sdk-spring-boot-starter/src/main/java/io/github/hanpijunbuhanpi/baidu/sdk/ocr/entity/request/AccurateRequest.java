@@ -1,14 +1,14 @@
 package io.github.hanpijunbuhanpi.baidu.sdk.ocr.entity.request;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import io.github.hanpijunbuhanpi.baidu.sdk.ocr.enumerate.GeneralBasicLanguageType;
+import io.github.hanpijunbuhanpi.baidu.sdk.ocr.enumerate.AccurateLanguageType;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 /**
- * 通用文字识别（标准版）请求
+ * 通用文字识别（高精度版）请求
  *
  * @author hanpijun-buhanpi
  * @since 2.2
@@ -17,11 +17,12 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-public class GeneralBasicRequest {
+public class AccurateRequest {
     /**
      * <pre>
      * 识别语言类型，默认为CHN_ENG
      * 可选值包括：
+     * - auto_detect：自动检测语言，并识别
      * - CHN_ENG：中英文混合
      * - ENG：英文
      * - JAP：日语
@@ -32,10 +33,24 @@ public class GeneralBasicRequest {
      * - GER：德语
      * - ITA：意大利语
      * - RUS：俄语
+     * - DAN：丹麦语
+     * - DUT：荷兰语
+     * - MAL：马来语
+     * - SWE：瑞典语
+     * - IND：印尼语
+     * - POL：波兰语
+     * - ROM：罗马尼亚语
+     * - TUR：土耳其语
+     * - GRE：希腊语
+     * - HUN：匈牙利语
+     * - THA：泰语
+     * - VIE：越南语
+     * - ARA：阿拉伯语
+     * - HIN：印地语
      * </pre>
      */
     @JsonProperty("language_type")
-    private GeneralBasicLanguageType languageType;
+    private AccurateLanguageType languageType;
 
     /**
      * <pre>
@@ -46,14 +61,6 @@ public class GeneralBasicRequest {
      */
     @JsonProperty("detect_direction")
     private Boolean detectDirection;
-
-    /**
-     * <pre>
-     * 是否检测语言，默认不检测，即：false。当前支持中文、英语、日语、韩语
-     * </pre>
-     */
-    @JsonProperty("detect_language")
-    private Boolean detectLanguage;
 
     /**
      * <pre>

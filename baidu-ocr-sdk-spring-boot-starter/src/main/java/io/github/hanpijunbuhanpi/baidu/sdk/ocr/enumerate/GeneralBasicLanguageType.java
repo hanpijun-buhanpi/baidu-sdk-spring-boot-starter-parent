@@ -5,12 +5,12 @@ import com.fasterxml.jackson.annotation.JsonValue;
 import io.github.hanpijunbuhanpi.baidu.sdk.common.exception.NotFoundEnumException;
 
 /**
- * 语言类型
+ * 通用文字识别（标准版）识别语言类型
  *
  * @author hanpijun-buhanpi
  * @since 2.2
  */
-public enum LanguageType {
+public enum GeneralBasicLanguageType {
     /** 中英文混合 */
     CHN_ENG("CHN_ENG", "中英文混合"),
     /** 英文 */
@@ -40,10 +40,10 @@ public enum LanguageType {
     public final String value;
 
     @JsonCreator
-    public static LanguageType parse(String value) {
-        for (LanguageType languageType : values()) {
-            if (languageType.value.equals(value)) {
-                return languageType;
+    public static GeneralBasicLanguageType parse(String value) {
+        for (GeneralBasicLanguageType generalBasicLanguageType : values()) {
+            if (generalBasicLanguageType.value.equals(value)) {
+                return generalBasicLanguageType;
             }
         }
         throw new NotFoundEnumException();
@@ -54,7 +54,7 @@ public enum LanguageType {
      */
     public final String desc;
 
-    LanguageType(String value, String desc) {
+    GeneralBasicLanguageType(String value, String desc) {
         this.value = value;
         this.desc = desc;
     }

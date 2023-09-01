@@ -1,13 +1,16 @@
 package io.test;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import io.github.hanpijunbuhanpi.baidu.sdk.ocr.entity.request.AccurateRequest;
 import io.github.hanpijunbuhanpi.baidu.sdk.ocr.entity.request.GeneralBasicRequest;
 import io.github.hanpijunbuhanpi.baidu.sdk.ocr.entity.request.IdCardRequest;
+import io.github.hanpijunbuhanpi.baidu.sdk.ocr.entity.response.AccurateResponse;
 import io.github.hanpijunbuhanpi.baidu.sdk.ocr.entity.response.GeneralBasicResponse;
 import io.github.hanpijunbuhanpi.baidu.sdk.ocr.entity.response.IdCardResponse;
 import io.github.hanpijunbuhanpi.baidu.sdk.ocr.entity.response.MultiIdCardResponse;
+import io.github.hanpijunbuhanpi.baidu.sdk.ocr.enumerate.AccurateLanguageType;
 import io.github.hanpijunbuhanpi.baidu.sdk.ocr.enumerate.IdCardSide;
-import io.github.hanpijunbuhanpi.baidu.sdk.ocr.enumerate.LanguageType;
+import io.github.hanpijunbuhanpi.baidu.sdk.ocr.enumerate.GeneralBasicLanguageType;
 import io.github.hanpijunbuhanpi.baidu.sdk.ocr.service.BaiduOcr;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -34,7 +37,7 @@ public class OcrRequestTest {
      */
     @Test
     public void basicGeneral() throws Exception {
-        GeneralBasicRequest generalBasicRequest = new GeneralBasicRequest(LanguageType.CHN_ENG, true, true, true, true);
+        GeneralBasicRequest generalBasicRequest = new GeneralBasicRequest(GeneralBasicLanguageType.CHN_ENG, true, true, true, true);
         GeneralBasicResponse generalBasicResponse = baiduOcr.basicGeneral("C:\\Users\\Administrator\\Desktop\\123412341234.jpg", generalBasicRequest);
         System.out.println(objectMapper.writeValueAsString(generalBasicResponse));
     }
@@ -46,7 +49,7 @@ public class OcrRequestTest {
      */
     @Test
     public void basicGeneralUrl() throws Exception {
-        GeneralBasicRequest generalBasicRequest = new GeneralBasicRequest(LanguageType.CHN_ENG, true, true, true, true);
+        GeneralBasicRequest generalBasicRequest = new GeneralBasicRequest(GeneralBasicLanguageType.CHN_ENG, true, true, true, true);
         GeneralBasicResponse generalBasicResponse = baiduOcr.basicGeneralUrl("http://5b0988e595225.cdn.sohucs.com/images/20171215/97fd34a8029a42bbac0642661d45a8d8.jpeg", generalBasicRequest);
         System.out.println(objectMapper.writeValueAsString(generalBasicResponse));
     }
@@ -58,7 +61,7 @@ public class OcrRequestTest {
      */
     @Test
     public void basicGeneralPdf() throws Exception {
-        GeneralBasicRequest generalBasicRequest = new GeneralBasicRequest(LanguageType.CHN_ENG, true, true, true, true);
+        GeneralBasicRequest generalBasicRequest = new GeneralBasicRequest(GeneralBasicLanguageType.CHN_ENG, true, true, true, true);
         // 正常页码
         GeneralBasicResponse generalBasicResponse = baiduOcr.basicGeneralPdf("C:\\Users\\Administrator\\Desktop\\123.pdf", 1, generalBasicRequest);
         System.out.println(objectMapper.writeValueAsString(generalBasicResponse));
@@ -76,7 +79,7 @@ public class OcrRequestTest {
      */
     @Test
     public void basicGeneralOfd() throws Exception {
-        GeneralBasicRequest generalBasicRequest = new GeneralBasicRequest(LanguageType.CHN_ENG, true, true, true, true);
+        GeneralBasicRequest generalBasicRequest = new GeneralBasicRequest(GeneralBasicLanguageType.CHN_ENG, true, true, true, true);
         // 正常页码
         GeneralBasicResponse generalBasicResponse = baiduOcr.basicGeneralPdf("C:\\Users\\Administrator\\Desktop\\123.ofd", 1, generalBasicRequest);
         System.out.println(objectMapper.writeValueAsString(generalBasicResponse));
@@ -85,6 +88,66 @@ public class OcrRequestTest {
         System.out.println(objectMapper.writeValueAsString(generalBasicResponse));
         generalBasicResponse = baiduOcr.basicGeneralPdf("C:\\Users\\Administrator\\Desktop\\123.ofd", 500, generalBasicRequest);
         System.out.println(objectMapper.writeValueAsString(generalBasicResponse));
+    }
+
+    /**
+     * 通用文字识别（高精度版）接口测试 - 图像识别
+     * @throws Exception 未知异常
+     * @since 2.2
+     */
+    @Test
+    public void basicAccurateGeneral() throws Exception {
+        AccurateRequest accurateRequest = new AccurateRequest(AccurateLanguageType.CHN_ENG, true, true, true);
+        AccurateResponse accurateResponse = baiduOcr.basicAccurateGeneral("C:\\Users\\Administrator\\Desktop\\123412341234.jpg", accurateRequest);
+        System.out.println(objectMapper.writeValueAsString(accurateResponse));
+    }
+
+    /**
+     * 通用文字识别（高精度版）接口测试 - url图像识别
+     * @throws Exception 未知异常
+     * @since 2.2
+     */
+    @Test
+    public void basicAccurateGeneralUrl() throws Exception {
+        AccurateRequest accurateRequest = new AccurateRequest(AccurateLanguageType.CHN_ENG, true, true, true);
+        AccurateResponse accurateResponse = baiduOcr.basicAccurateGeneralUrl("http://5b0988e595225.cdn.sohucs.com/images/20171215/97fd34a8029a42bbac0642661d45a8d8.jpeg", accurateRequest);
+        System.out.println(objectMapper.writeValueAsString(accurateResponse));
+    }
+
+    /**
+     * 通用文字识别（高精度版）接口测试 - pdf识别
+     * @throws Exception 未知异常
+     * @since 2.2
+     */
+    @Test
+    public void basicAccurateGeneralPdf() throws Exception {
+        AccurateRequest accurateRequest = new AccurateRequest(AccurateLanguageType.CHN_ENG, true, true, true);
+        // 正常页码
+        AccurateResponse accurateResponse = baiduOcr.basicAccurateGeneralPdf("C:\\Users\\Administrator\\Desktop\\123.pdf", 1, accurateRequest);
+        System.out.println(objectMapper.writeValueAsString(accurateResponse));
+        // 异常页码
+        accurateResponse = baiduOcr.basicAccurateGeneralPdf("C:\\Users\\Administrator\\Desktop\\123.pdf", -1, accurateRequest);
+        System.out.println(objectMapper.writeValueAsString(accurateResponse));
+        accurateResponse = baiduOcr.basicAccurateGeneralPdf("C:\\Users\\Administrator\\Desktop\\123.pdf", 500, accurateRequest);
+        System.out.println(objectMapper.writeValueAsString(accurateResponse));
+    }
+
+    /**
+     * 通用文字识别（高精度版）接口测试 - ofd识别
+     * @throws Exception 未知异常
+     * @since 2.2
+     */
+    @Test
+    public void basicAccurateGeneralOfd() throws Exception {
+        AccurateRequest accurateRequest = new AccurateRequest(AccurateLanguageType.CHN_ENG, true, true, true);
+        // 正常页码
+        AccurateResponse accurateResponse = baiduOcr.basicAccurateGeneralOfd("C:\\Users\\Administrator\\Desktop\\123.ofd", 1, accurateRequest);
+        System.out.println(objectMapper.writeValueAsString(accurateResponse));
+        // 异常页码
+        accurateResponse = baiduOcr.basicAccurateGeneralOfd("C:\\Users\\Administrator\\Desktop\\123.ofd", -1, accurateRequest);
+        System.out.println(objectMapper.writeValueAsString(accurateResponse));
+        accurateResponse = baiduOcr.basicAccurateGeneralOfd("C:\\Users\\Administrator\\Desktop\\123.ofd", 500, accurateRequest);
+        System.out.println(objectMapper.writeValueAsString(accurateResponse));
     }
 
     /**

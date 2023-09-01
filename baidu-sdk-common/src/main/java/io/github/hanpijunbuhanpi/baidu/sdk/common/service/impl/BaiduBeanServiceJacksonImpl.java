@@ -1,5 +1,6 @@
 package io.github.hanpijunbuhanpi.baidu.sdk.common.service.impl;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.DeserializationFeature;
@@ -22,6 +23,7 @@ public class BaiduBeanServiceJacksonImpl implements BaiduBeanService {
 
     public BaiduBeanServiceJacksonImpl() {
         objectMapper = new ObjectMapper();
+        objectMapper.setSerializationInclusion(JsonInclude.Include.NON_NULL);
         objectMapper.disable(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES);
     }
 

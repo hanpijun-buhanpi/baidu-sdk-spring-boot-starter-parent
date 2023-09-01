@@ -1,15 +1,9 @@
 package io.test;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import io.github.hanpijunbuhanpi.baidu.sdk.ocr.entity.request.AccurateRequest;
-import io.github.hanpijunbuhanpi.baidu.sdk.ocr.entity.request.GeneralBasicRequest;
-import io.github.hanpijunbuhanpi.baidu.sdk.ocr.entity.request.GeneralRequest;
-import io.github.hanpijunbuhanpi.baidu.sdk.ocr.entity.request.IdCardRequest;
+import io.github.hanpijunbuhanpi.baidu.sdk.ocr.entity.request.*;
 import io.github.hanpijunbuhanpi.baidu.sdk.ocr.entity.response.*;
-import io.github.hanpijunbuhanpi.baidu.sdk.ocr.enumerate.AccurateLanguageType;
-import io.github.hanpijunbuhanpi.baidu.sdk.ocr.enumerate.Granularity;
-import io.github.hanpijunbuhanpi.baidu.sdk.ocr.enumerate.IdCardSide;
-import io.github.hanpijunbuhanpi.baidu.sdk.ocr.enumerate.GeneralBasicLanguageType;
+import io.github.hanpijunbuhanpi.baidu.sdk.ocr.enumerate.*;
 import io.github.hanpijunbuhanpi.baidu.sdk.ocr.service.BaiduOcr;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -206,6 +200,66 @@ public class OcrRequestTest {
         generalResponse = baiduOcr.generalOfd("C:\\Users\\Administrator\\Desktop\\123.ofd", -1, generalRequest);
         System.out.println(objectMapper.writeValueAsString(generalResponse));
         generalResponse = baiduOcr.generalOfd("C:\\Users\\Administrator\\Desktop\\123.ofd", 500, generalRequest);
+        System.out.println(objectMapper.writeValueAsString(generalResponse));
+    }
+
+    /**
+     * 通用文字识别（高精度含位置版）接口测试 - 图像识别
+     * @throws Exception 未知异常
+     * @since 2.2
+     */
+    @Test
+    public void accurateGeneral() throws Exception {
+        AccurateGeneralRequest accurateGeneralRequest = new AccurateGeneralRequest(AccurateLanguageType.CHN_ENG, EngGranularity.word, Granularity.small, true, true, true, true);
+        GeneralResponse generalResponse = baiduOcr.accurateGeneral("C:\\Users\\Administrator\\Desktop\\123412341234.jpg", accurateGeneralRequest);
+        System.out.println(objectMapper.writeValueAsString(generalResponse));
+    }
+
+    /**
+     * 通用文字识别（高精度含位置版）接口测试 - url图像识别
+     * @throws Exception 未知异常
+     * @since 2.2
+     */
+    @Test
+    public void accurateGeneralUrl() throws Exception {
+        AccurateGeneralRequest accurateGeneralRequest = new AccurateGeneralRequest(AccurateLanguageType.CHN_ENG, EngGranularity.word, Granularity.small, true, true, true, true);
+        GeneralResponse generalResponse = baiduOcr.accurateGeneralUrl("http://5b0988e595225.cdn.sohucs.com/images/20171215/97fd34a8029a42bbac0642661d45a8d8.jpeg", accurateGeneralRequest);
+        System.out.println(objectMapper.writeValueAsString(generalResponse));
+    }
+
+    /**
+     * 通用文字识别（高精度含位置版）接口测试 - pdf识别
+     * @throws Exception 未知异常
+     * @since 2.2
+     */
+    @Test
+    public void accurateGeneralPdf() throws Exception {
+        AccurateGeneralRequest accurateGeneralRequest = new AccurateGeneralRequest(AccurateLanguageType.CHN_ENG, EngGranularity.word, Granularity.small, true, true, true, true);
+        // 正常页码
+        GeneralResponse generalResponse = baiduOcr.accurateGeneralPdf("C:\\Users\\Administrator\\Desktop\\123.pdf", 1, accurateGeneralRequest);
+        System.out.println(objectMapper.writeValueAsString(generalResponse));
+        // 异常页码
+        generalResponse = baiduOcr.accurateGeneralPdf("C:\\Users\\Administrator\\Desktop\\123.pdf", -1, accurateGeneralRequest);
+        System.out.println(objectMapper.writeValueAsString(generalResponse));
+        generalResponse = baiduOcr.accurateGeneralPdf("C:\\Users\\Administrator\\Desktop\\123.pdf", 500, accurateGeneralRequest);
+        System.out.println(objectMapper.writeValueAsString(generalResponse));
+    }
+
+    /**
+     * 通用文字识别（高精度含位置版）接口测试 - ofd识别
+     * @throws Exception 未知异常
+     * @since 2.2
+     */
+    @Test
+    public void accurateGeneralOfd() throws Exception {
+        AccurateGeneralRequest accurateGeneralRequest = new AccurateGeneralRequest(AccurateLanguageType.CHN_ENG, EngGranularity.word, Granularity.small, true, true, true, true);
+        // 正常页码
+        GeneralResponse generalResponse = baiduOcr.accurateGeneralOfd("C:\\Users\\Administrator\\Desktop\\123.ofd", 1, accurateGeneralRequest);
+        System.out.println(objectMapper.writeValueAsString(generalResponse));
+        // 异常页码
+        generalResponse = baiduOcr.accurateGeneralOfd("C:\\Users\\Administrator\\Desktop\\123.ofd", -1, accurateGeneralRequest);
+        System.out.println(objectMapper.writeValueAsString(generalResponse));
+        generalResponse = baiduOcr.accurateGeneralOfd("C:\\Users\\Administrator\\Desktop\\123.ofd", 500, accurateGeneralRequest);
         System.out.println(objectMapper.writeValueAsString(generalResponse));
     }
 

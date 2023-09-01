@@ -4,10 +4,7 @@ import com.baidu.aip.ocr.AipOcr;
 import com.baidu.aip.ocr.AipOcrExtend;
 import io.github.hanpijunbuhanpi.baidu.sdk.common.service.BaiduClient;
 import io.github.hanpijunbuhanpi.baidu.sdk.ocr.config.property.BaiduOcrConfigurationProperties;
-import io.github.hanpijunbuhanpi.baidu.sdk.ocr.entity.request.AccurateRequest;
-import io.github.hanpijunbuhanpi.baidu.sdk.ocr.entity.request.GeneralBasicRequest;
-import io.github.hanpijunbuhanpi.baidu.sdk.ocr.entity.request.GeneralRequest;
-import io.github.hanpijunbuhanpi.baidu.sdk.ocr.entity.request.IdCardRequest;
+import io.github.hanpijunbuhanpi.baidu.sdk.ocr.entity.request.*;
 import io.github.hanpijunbuhanpi.baidu.sdk.ocr.entity.response.*;
 import io.github.hanpijunbuhanpi.baidu.sdk.ocr.enumerate.IdCardSide;
 import org.json.JSONObject;
@@ -383,7 +380,7 @@ public class BaiduOcr extends BaiduClient<AipOcr> {
      *                detect_language 是否检测语言，默认不检测。当前支持（中文、英语、日语、韩语）
      *                vertexes_location 是否返回文字外接多边形顶点位置，不支持单字位置。默认为false
      *                probability 是否返回识别结果中每一行的置信度
-     * @return {@link JSONObject}
+     * @return {@link GeneralResponse}
      *
      * @since 2.2
      */
@@ -427,12 +424,149 @@ public class BaiduOcr extends BaiduClient<AipOcr> {
      *                detect_language 是否检测语言，默认不检测。当前支持（中文、英语、日语、韩语）
      *                vertexes_location 是否返回文字外接多边形顶点位置，不支持单字位置。默认为false
      *                probability 是否返回识别结果中每一行的置信度
-     * @return {@link JSONObject}
+     * @return {@link GeneralResponse}
      *
      * @since 2.2
      */
     public GeneralResponse generalOfd(String ofd, int num, GeneralRequest options) {
         return baiduBeanService.buildResponse(((AipOcrExtend) client).generalOfd(ofd, num, baiduBeanService.buildStringOptions(options)), GeneralResponse.class);
+    }
+
+    /**
+     * 通用文字识别（含位置高精度版）接口
+     * 用户向服务请求识别某张图中的所有文字，并返回文字在图片中的坐标信息，相对于通用文字识别（含位置信息版）该产品精度更高，但是识别耗时会稍长。
+     *
+     * @param image   - 二进制图像数据
+     * @param options - 可选参数对象，key: value都为string类型
+     *                options - options列表:
+     *                recognize_granularity 是否定位单字符位置，big：不定位单字符位置，默认值；small：定位单字符位置
+     *                detect_direction 是否检测图像朝向，默认不检测，即：false。朝向是指输入图像是正常方向、逆时针旋转90/180/270度。可选值包括:<br>- true：检测朝向；<br>- false：不检测朝向。
+     *                vertexes_location 是否返回文字外接多边形顶点位置，不支持单字位置。默认为false
+     *                probability 是否返回识别结果中每一行的置信度
+     * @return {@link GeneralResponse}
+     *
+     * @since 2.2
+     */
+    public GeneralResponse accurateGeneral(byte[] image, AccurateGeneralRequest options) {
+        return baiduBeanService.buildResponse(client.accurateGeneral(image, baiduBeanService.buildStringOptions(options)), GeneralResponse.class);
+    }
+
+    /**
+     * 通用文字识别（含位置高精度版）接口
+     * 用户向服务请求识别某张图中的所有文字，并返回文字在图片中的坐标信息，相对于通用文字识别（含位置信息版）该产品精度更高，但是识别耗时会稍长。
+     *
+     * @param image   - 本地图片路径
+     * @param options - 可选参数对象，key: value都为string类型
+     *                options - options列表:
+     *                recognize_granularity 是否定位单字符位置，big：不定位单字符位置，默认值；small：定位单字符位置
+     *                detect_direction 是否检测图像朝向，默认不检测，即：false。朝向是指输入图像是正常方向、逆时针旋转90/180/270度。可选值包括:<br>- true：检测朝向；<br>- false：不检测朝向。
+     *                vertexes_location 是否返回文字外接多边形顶点位置，不支持单字位置。默认为false
+     *                probability 是否返回识别结果中每一行的置信度
+     * @return {@link GeneralResponse}
+     *
+     * @since 2.2
+     */
+    public GeneralResponse accurateGeneral(String image, AccurateGeneralRequest options) {
+        return baiduBeanService.buildResponse(client.accurateGeneral(image, baiduBeanService.buildStringOptions(options)), GeneralResponse.class);
+    }
+
+    /**
+     * 通用文字识别（含位置高精度版）接口
+     * 用户向服务请求识别某张图中的所有文字，并返回文字在图片中的坐标信息，相对于通用文字识别（含位置信息版）该产品精度更高，但是识别耗时会稍长。
+     *
+     * @param url   - 图片完整URL，URL长度不超过1024字节，URL对应的图片base64编码后大小不超过4M，最短边至少15px，最长边最大4096px,支持jpg/png/bmp格式，当image字段存在时url字段失效
+     * @param options - 可选参数对象，key: value都为string类型
+     *                options - options列表:
+     *                recognize_granularity 是否定位单字符位置，big：不定位单字符位置，默认值；small：定位单字符位置
+     *                detect_direction 是否检测图像朝向，默认不检测，即：false。朝向是指输入图像是正常方向、逆时针旋转90/180/270度。可选值包括:<br>- true：检测朝向；<br>- false：不检测朝向。
+     *                vertexes_location 是否返回文字外接多边形顶点位置，不支持单字位置。默认为false
+     *                probability 是否返回识别结果中每一行的置信度
+     * @return {@link GeneralResponse}
+     *
+     * @since 2.2
+     */
+    public GeneralResponse accurateGeneralUrl(String url, AccurateGeneralRequest options) {
+        return baiduBeanService.buildResponse(((AipOcrExtend) client).accurateGeneralUrl(url, baiduBeanService.buildStringOptions(options)), GeneralResponse.class);
+    }
+
+    /**
+     * 通用文字识别（含位置高精度版）接口
+     * 用户向服务请求识别PDF文件中某页中的所有文字，相对于通用文字识别该产品精度更高，但是识别耗时会稍长。
+     *
+     * @param pdf   - 二进制PDF文件数据
+     * @param num   - PDF文件页码
+     * @param options - 可选参数对象，key: value都为string类型
+     *                options - options列表:
+     *                recognize_granularity 是否定位单字符位置，big：不定位单字符位置，默认值；small：定位单字符位置
+     *                detect_direction 是否检测图像朝向，默认不检测，即：false。朝向是指输入图像是正常方向、逆时针旋转90/180/270度。可选值包括:<br>- true：检测朝向；<br>- false：不检测朝向。
+     *                vertexes_location 是否返回文字外接多边形顶点位置，不支持单字位置。默认为false
+     *                probability 是否返回识别结果中每一行的置信度
+     * @return {@link GeneralResponse}
+     *
+     * @since 2.2
+     */
+    public GeneralResponse accurateGeneralPdf(byte[] pdf, int num, AccurateGeneralRequest options) {
+        return baiduBeanService.buildResponse(((AipOcrExtend) client).accurateGeneralPdf(pdf, num, baiduBeanService.buildStringOptions(options)), GeneralResponse.class);
+    }
+
+    /**
+     * 通用文字识别（含位置高精度版）接口
+     * 用户向服务请求识别PDF文件中某页中的所有文字，相对于通用文字识别该产品精度更高，但是识别耗时会稍长。
+     *
+     * @param pdf   - 本地PDF文件路径
+     * @param num   - PDF文件页码
+     * @param options - 可选参数对象，key: value都为string类型
+     *                options - options列表:
+     *                recognize_granularity 是否定位单字符位置，big：不定位单字符位置，默认值；small：定位单字符位置
+     *                detect_direction 是否检测图像朝向，默认不检测，即：false。朝向是指输入图像是正常方向、逆时针旋转90/180/270度。可选值包括:<br>- true：检测朝向；<br>- false：不检测朝向。
+     *                vertexes_location 是否返回文字外接多边形顶点位置，不支持单字位置。默认为false
+     *                probability 是否返回识别结果中每一行的置信度
+     * @return {@link GeneralResponse}
+     *
+     * @since 2.2
+     */
+    public GeneralResponse accurateGeneralPdf(String pdf, int num, AccurateGeneralRequest options) {
+        return baiduBeanService.buildResponse(((AipOcrExtend) client).accurateGeneralPdf(pdf, num, baiduBeanService.buildStringOptions(options)), GeneralResponse.class);
+    }
+
+    /**
+     * 通用文字识别（含位置高精度版）接口
+     * 用户向服务请求识别OFD文件中某页中的所有文字，相对于通用文字识别该产品精度更高，但是识别耗时会稍长。
+     *
+     * @param ofd   - 二进制OFD文件数据
+     * @param num   - OFD文件页码
+     * @param options - 可选参数对象，key: value都为string类型
+     *                options - options列表:
+     *                recognize_granularity 是否定位单字符位置，big：不定位单字符位置，默认值；small：定位单字符位置
+     *                detect_direction 是否检测图像朝向，默认不检测，即：false。朝向是指输入图像是正常方向、逆时针旋转90/180/270度。可选值包括:<br>- true：检测朝向；<br>- false：不检测朝向。
+     *                vertexes_location 是否返回文字外接多边形顶点位置，不支持单字位置。默认为false
+     *                probability 是否返回识别结果中每一行的置信度
+     * @return {@link GeneralResponse}
+     *
+     * @since 2.2
+     */
+    public GeneralResponse accurateGeneralOfd(byte[] ofd, int num, AccurateGeneralRequest options) {
+        return baiduBeanService.buildResponse(((AipOcrExtend) client).accurateGeneralOfd(ofd, num, baiduBeanService.buildStringOptions(options)), GeneralResponse.class);
+    }
+
+    /**
+     * 通用文字识别（含位置高精度版）接口
+     * 用户向服务请求识别OFD文件中某页中的所有文字，相对于通用文字识别该产品精度更高，但是识别耗时会稍长。
+     *
+     * @param ofd   - 本地OFD文件路径
+     * @param num   - OFD文件页码
+     * @param options - 可选参数对象，key: value都为string类型
+     *                options - options列表:
+     *                recognize_granularity 是否定位单字符位置，big：不定位单字符位置，默认值；small：定位单字符位置
+     *                detect_direction 是否检测图像朝向，默认不检测，即：false。朝向是指输入图像是正常方向、逆时针旋转90/180/270度。可选值包括:<br>- true：检测朝向；<br>- false：不检测朝向。
+     *                vertexes_location 是否返回文字外接多边形顶点位置，不支持单字位置。默认为false
+     *                probability 是否返回识别结果中每一行的置信度
+     * @return {@link GeneralResponse}
+     *
+     * @since 2.2
+     */
+    public GeneralResponse accurateGeneralOfd(String ofd, int num, AccurateGeneralRequest options) {
+        return baiduBeanService.buildResponse(((AipOcrExtend) client).accurateGeneralOfd(ofd, num, baiduBeanService.buildStringOptions(options)), GeneralResponse.class);
     }
 
     /**

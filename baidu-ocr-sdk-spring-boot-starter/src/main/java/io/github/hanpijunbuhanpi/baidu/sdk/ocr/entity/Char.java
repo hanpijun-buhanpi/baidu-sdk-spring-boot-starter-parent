@@ -15,7 +15,7 @@ public class Char {
      * 单字符识别结果，当 recognize_granularity=small 时返回该字段
      */
     @JsonProperty("char")
-    private Character character;
+    private String character;
 
     /**
      * 位置数组（坐标0点为左上角）

@@ -7,10 +7,7 @@ import io.github.hanpijunbuhanpi.baidu.sdk.ocr.config.property.BaiduOcrConfigura
 import io.github.hanpijunbuhanpi.baidu.sdk.ocr.entity.request.*;
 import io.github.hanpijunbuhanpi.baidu.sdk.ocr.entity.response.*;
 import io.github.hanpijunbuhanpi.baidu.sdk.ocr.enumerate.IdCardSide;
-import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
-
-import java.util.HashMap;
 
 /**
  * 百度文字识别
@@ -33,12 +30,12 @@ public class BaiduOcr extends BaiduClient<AipOcr> {
      *                detect_direction 是否检测图像朝向，默认不检测，即：false。朝向是指输入图像是正常方向、逆时针旋转90/180/270度。可选值包括:<br>- true：检测朝向；<br>- false：不检测朝向。
      *                detect_language 是否检测语言，默认不检测。当前支持（中文、英语、日语、韩语）
      *                probability 是否返回识别结果中每一行的置信度
-     * @return {@link GeneralBasicResponse}
+     * @return {@link GeneralOcrResponse}
      *
      * @since 2.2
      */
-    public GeneralBasicResponse basicGeneral(byte[] image, GeneralBasicRequest options) {
-        return baiduBeanService.buildResponse(client.basicGeneral(image, baiduBeanService.buildStringOptions(options)), GeneralBasicResponse.class);
+    public GeneralOcrResponse basicGeneral(byte[] image, GeneralOcrRequest options) {
+        return baiduBeanService.buildResponse(client.basicGeneral(image, baiduBeanService.buildStringOptions(options)), GeneralOcrResponse.class);
     }
 
     /**
@@ -52,12 +49,12 @@ public class BaiduOcr extends BaiduClient<AipOcr> {
      *                detect_direction 是否检测图像朝向，默认不检测，即：false。朝向是指输入图像是正常方向、逆时针旋转90/180/270度。可选值包括:<br>- true：检测朝向；<br>- false：不检测朝向。
      *                detect_language 是否检测语言，默认不检测。当前支持（中文、英语、日语、韩语）
      *                probability 是否返回识别结果中每一行的置信度
-     * @return {@link GeneralBasicResponse}
+     * @return {@link GeneralOcrResponse}
      *
      * @since 2.2
      */
-    public GeneralBasicResponse basicGeneral(String image, GeneralBasicRequest options) {
-        return baiduBeanService.buildResponse(client.basicGeneral(image, baiduBeanService.buildStringOptions(options)), GeneralBasicResponse.class);
+    public GeneralOcrResponse basicGeneral(String image, GeneralOcrRequest options) {
+        return baiduBeanService.buildResponse(client.basicGeneral(image, baiduBeanService.buildStringOptions(options)), GeneralOcrResponse.class);
     }
 
     /**
@@ -71,12 +68,12 @@ public class BaiduOcr extends BaiduClient<AipOcr> {
      *                detect_direction 是否检测图像朝向，默认不检测，即：false。朝向是指输入图像是正常方向、逆时针旋转90/180/270度。可选值包括:<br>- true：检测朝向；<br>- false：不检测朝向。
      *                detect_language 是否检测语言，默认不检测。当前支持（中文、英语、日语、韩语）
      *                probability 是否返回识别结果中每一行的置信度
-     * @return {@link GeneralBasicResponse}
+     * @return {@link GeneralOcrResponse}
      *
      * @since 2.2
      */
-    public GeneralBasicResponse basicGeneralUrl(String url, GeneralBasicRequest options) {
-        return baiduBeanService.buildResponse(client.basicGeneralUrl(url, baiduBeanService.buildStringOptions(options)), GeneralBasicResponse.class);
+    public GeneralOcrResponse basicGeneralUrl(String url, GeneralOcrRequest options) {
+        return baiduBeanService.buildResponse(client.basicGeneralUrl(url, baiduBeanService.buildStringOptions(options)), GeneralOcrResponse.class);
     }
 
     /**
@@ -91,12 +88,12 @@ public class BaiduOcr extends BaiduClient<AipOcr> {
      *                detect_direction 是否检测图像朝向，默认不检测，即：false。朝向是指输入图像是正常方向、逆时针旋转90/180/270度。可选值包括:<br>- true：检测朝向；<br>- false：不检测朝向。
      *                detect_language 是否检测语言，默认不检测。当前支持（中文、英语、日语、韩语）
      *                probability 是否返回识别结果中每一行的置信度
-     * @return {@link GeneralBasicResponse}
+     * @return {@link GeneralOcrResponse}
      *
      * @since 2.2
      */
-    public GeneralBasicResponse basicGeneralPdf(byte[] pdf, int num, GeneralBasicRequest options) {
-        return baiduBeanService.buildResponse(((AipOcrExtend) client).basicGeneralPdf(pdf, num, baiduBeanService.buildStringOptions(options)), GeneralBasicResponse.class);
+    public GeneralOcrResponse basicGeneralPdf(byte[] pdf, int num, GeneralOcrRequest options) {
+        return baiduBeanService.buildResponse(((AipOcrExtend) client).basicGeneralPdf(pdf, num, baiduBeanService.buildStringOptions(options)), GeneralOcrResponse.class);
     }
 
     /**
@@ -111,12 +108,12 @@ public class BaiduOcr extends BaiduClient<AipOcr> {
      *                detect_direction 是否检测图像朝向，默认不检测，即：false。朝向是指输入图像是正常方向、逆时针旋转90/180/270度。可选值包括:<br>- true：检测朝向；<br>- false：不检测朝向。
      *                detect_language 是否检测语言，默认不检测。当前支持（中文、英语、日语、韩语）
      *                probability 是否返回识别结果中每一行的置信度
-     * @return {@link GeneralBasicResponse}
+     * @return {@link GeneralOcrResponse}
      *
      * @since 2.2
      */
-    public GeneralBasicResponse basicGeneralPdf(String pdf, int num, GeneralBasicRequest options) {
-        return baiduBeanService.buildResponse(((AipOcrExtend) client).basicGeneralPdf(pdf, num, baiduBeanService.buildStringOptions(options)), GeneralBasicResponse.class);
+    public GeneralOcrResponse basicGeneralPdf(String pdf, int num, GeneralOcrRequest options) {
+        return baiduBeanService.buildResponse(((AipOcrExtend) client).basicGeneralPdf(pdf, num, baiduBeanService.buildStringOptions(options)), GeneralOcrResponse.class);
     }
 
     /**
@@ -131,12 +128,12 @@ public class BaiduOcr extends BaiduClient<AipOcr> {
      *                detect_direction 是否检测图像朝向，默认不检测，即：false。朝向是指输入图像是正常方向、逆时针旋转90/180/270度。可选值包括:<br>- true：检测朝向；<br>- false：不检测朝向。
      *                detect_language 是否检测语言，默认不检测。当前支持（中文、英语、日语、韩语）
      *                probability 是否返回识别结果中每一行的置信度
-     * @return {@link GeneralBasicResponse}
+     * @return {@link GeneralOcrResponse}
      *
      * @since 2.2
      */
-    public GeneralBasicResponse basicGeneralOfd(byte[] ofd, int num, GeneralBasicRequest options) {
-        return baiduBeanService.buildResponse(((AipOcrExtend) client).basicGeneralOfd(ofd, num, baiduBeanService.buildStringOptions(options)), GeneralBasicResponse.class);
+    public GeneralOcrResponse basicGeneralOfd(byte[] ofd, int num, GeneralOcrRequest options) {
+        return baiduBeanService.buildResponse(((AipOcrExtend) client).basicGeneralOfd(ofd, num, baiduBeanService.buildStringOptions(options)), GeneralOcrResponse.class);
     }
 
     /**
@@ -151,12 +148,12 @@ public class BaiduOcr extends BaiduClient<AipOcr> {
      *                detect_direction 是否检测图像朝向，默认不检测，即：false。朝向是指输入图像是正常方向、逆时针旋转90/180/270度。可选值包括:<br>- true：检测朝向；<br>- false：不检测朝向。
      *                detect_language 是否检测语言，默认不检测。当前支持（中文、英语、日语、韩语）
      *                probability 是否返回识别结果中每一行的置信度
-     * @return {@link GeneralBasicResponse}
+     * @return {@link GeneralOcrResponse}
      *
      * @since 2.2
      */
-    public GeneralBasicResponse basicGeneralOfd(String ofd, int num, GeneralBasicRequest options) {
-        return baiduBeanService.buildResponse(((AipOcrExtend) client).basicGeneralOfd(ofd, num, baiduBeanService.buildStringOptions(options)), GeneralBasicResponse.class);
+    public GeneralOcrResponse basicGeneralOfd(String ofd, int num, GeneralOcrRequest options) {
+        return baiduBeanService.buildResponse(((AipOcrExtend) client).basicGeneralOfd(ofd, num, baiduBeanService.buildStringOptions(options)), GeneralOcrResponse.class);
     }
 
     /**
@@ -168,12 +165,12 @@ public class BaiduOcr extends BaiduClient<AipOcr> {
      *                options - options列表:
      *                detect_direction 是否检测图像朝向，默认不检测，即：false。朝向是指输入图像是正常方向、逆时针旋转90/180/270度。可选值包括:<br>- true：检测朝向；<br>- false：不检测朝向。
      *                probability 是否返回识别结果中每一行的置信度
-     * @return {@link AccurateResponse}
+     * @return {@link GeneralOcrResponse}
      *
      * @since 2.2
      */
-    public AccurateResponse basicAccurateGeneral(byte[] image, AccurateRequest options) {
-        return baiduBeanService.buildResponse(client.basicAccurateGeneral(image, baiduBeanService.buildStringOptions(options)), AccurateResponse.class);
+    public GeneralOcrResponse basicAccurateGeneral(byte[] image, GeneralOcrRequest options) {
+        return baiduBeanService.buildResponse(client.basicAccurateGeneral(image, baiduBeanService.buildStringOptions(options)), GeneralOcrResponse.class);
     }
 
     /**
@@ -185,12 +182,12 @@ public class BaiduOcr extends BaiduClient<AipOcr> {
      *                options - options列表:
      *                detect_direction 是否检测图像朝向，默认不检测，即：false。朝向是指输入图像是正常方向、逆时针旋转90/180/270度。可选值包括:<br>- true：检测朝向；<br>- false：不检测朝向。
      *                probability 是否返回识别结果中每一行的置信度
-     * @return {@link AccurateResponse}
+     * @return {@link GeneralOcrResponse}
      *
      * @since 2.2
      */
-    public AccurateResponse basicAccurateGeneral(String image, AccurateRequest options) {
-        return baiduBeanService.buildResponse(client.basicAccurateGeneral(image, baiduBeanService.buildStringOptions(options)), AccurateResponse.class);
+    public GeneralOcrResponse basicAccurateGeneral(String image, GeneralOcrRequest options) {
+        return baiduBeanService.buildResponse(client.basicAccurateGeneral(image, baiduBeanService.buildStringOptions(options)), GeneralOcrResponse.class);
     }
 
     /**
@@ -202,11 +199,11 @@ public class BaiduOcr extends BaiduClient<AipOcr> {
      *                options - options列表:
      *                detect_direction 是否检测图像朝向，默认不检测，即：false。朝向是指输入图像是正常方向、逆时针旋转90/180/270度。可选值包括:<br>- true：检测朝向；<br>- false：不检测朝向。
      *                probability 是否返回识别结果中每一行的置信度
-     * @return {@link AccurateRequest}
+     * @return {@link GeneralOcrResponse}
      * @since 2.2
      */
-    public AccurateResponse basicAccurateGeneralUrl(String url, AccurateRequest options) {
-        return baiduBeanService.buildResponse(((AipOcrExtend) client).basicAccurateGeneralUrl(url, baiduBeanService.buildStringOptions(options)), AccurateResponse.class);
+    public GeneralOcrResponse basicAccurateGeneralUrl(String url, GeneralOcrRequest options) {
+        return baiduBeanService.buildResponse(((AipOcrExtend) client).basicAccurateGeneralUrl(url, baiduBeanService.buildStringOptions(options)), GeneralOcrResponse.class);
     }
 
     /**
@@ -219,12 +216,12 @@ public class BaiduOcr extends BaiduClient<AipOcr> {
      *                options - options列表:
      *                detect_direction 是否检测图像朝向，默认不检测，即：false。朝向是指输入图像是正常方向、逆时针旋转90/180/270度。可选值包括:<br>- true：检测朝向；<br>- false：不检测朝向。
      *                probability 是否返回识别结果中每一行的置信度
-     * @return {@link AccurateResponse}
+     * @return {@link GeneralOcrResponse}
      *
      * @since 2.2
      */
-    public AccurateResponse basicAccurateGeneralPdf(byte[] pdf, int num, AccurateRequest options) {
-        return baiduBeanService.buildResponse(((AipOcrExtend) client).basicAccurateGeneralPdf(pdf, num, baiduBeanService.buildStringOptions(options)), GeneralBasicResponse.class);
+    public GeneralOcrResponse basicAccurateGeneralPdf(byte[] pdf, int num, GeneralOcrRequest options) {
+        return baiduBeanService.buildResponse(((AipOcrExtend) client).basicAccurateGeneralPdf(pdf, num, baiduBeanService.buildStringOptions(options)), GeneralOcrResponse.class);
     }
 
     /**
@@ -237,12 +234,12 @@ public class BaiduOcr extends BaiduClient<AipOcr> {
      *                options - options列表:
      *                detect_direction 是否检测图像朝向，默认不检测，即：false。朝向是指输入图像是正常方向、逆时针旋转90/180/270度。可选值包括:<br>- true：检测朝向；<br>- false：不检测朝向。
      *                probability 是否返回识别结果中每一行的置信度
-     * @return {@link AccurateResponse}
+     * @return {@link GeneralOcrResponse}
      *
      * @since 2.2
      */
-    public AccurateResponse basicAccurateGeneralPdf(String pdf, int num, AccurateRequest options) {
-        return baiduBeanService.buildResponse(((AipOcrExtend) client).basicAccurateGeneralPdf(pdf, num, baiduBeanService.buildStringOptions(options)), GeneralBasicResponse.class);
+    public GeneralOcrResponse basicAccurateGeneralPdf(String pdf, int num, GeneralOcrRequest options) {
+        return baiduBeanService.buildResponse(((AipOcrExtend) client).basicAccurateGeneralPdf(pdf, num, baiduBeanService.buildStringOptions(options)), GeneralOcrResponse.class);
     }
 
     /**
@@ -255,12 +252,12 @@ public class BaiduOcr extends BaiduClient<AipOcr> {
      *                options - options列表:
      *                detect_direction 是否检测图像朝向，默认不检测，即：false。朝向是指输入图像是正常方向、逆时针旋转90/180/270度。可选值包括:<br>- true：检测朝向；<br>- false：不检测朝向。
      *                probability 是否返回识别结果中每一行的置信度
-     * @return {@link AccurateResponse}
+     * @return {@link GeneralOcrResponse}
      *
      * @since 2.2
      */
-    public AccurateResponse basicAccurateGeneralOfd(byte[] ofd, int num, AccurateRequest options) {
-        return baiduBeanService.buildResponse(((AipOcrExtend) client).basicAccurateGeneralOfd(ofd, num, baiduBeanService.buildStringOptions(options)), GeneralBasicResponse.class);
+    public GeneralOcrResponse basicAccurateGeneralOfd(byte[] ofd, int num, GeneralOcrRequest options) {
+        return baiduBeanService.buildResponse(((AipOcrExtend) client).basicAccurateGeneralOfd(ofd, num, baiduBeanService.buildStringOptions(options)), GeneralOcrResponse.class);
     }
 
     /**
@@ -273,12 +270,12 @@ public class BaiduOcr extends BaiduClient<AipOcr> {
      *                options - options列表:
      *                detect_direction 是否检测图像朝向，默认不检测，即：false。朝向是指输入图像是正常方向、逆时针旋转90/180/270度。可选值包括:<br>- true：检测朝向；<br>- false：不检测朝向。
      *                probability 是否返回识别结果中每一行的置信度
-     * @return {@link AccurateResponse}
+     * @return {@link GeneralOcrResponse}
      *
      * @since 2.2
      */
-    public AccurateResponse basicAccurateGeneralOfd(String ofd, int num, AccurateRequest options) {
-        return baiduBeanService.buildResponse(((AipOcrExtend) client).basicAccurateGeneralOfd(ofd, num, baiduBeanService.buildStringOptions(options)), GeneralBasicResponse.class);
+    public GeneralOcrResponse basicAccurateGeneralOfd(String ofd, int num, GeneralOcrRequest options) {
+        return baiduBeanService.buildResponse(((AipOcrExtend) client).basicAccurateGeneralOfd(ofd, num, baiduBeanService.buildStringOptions(options)), GeneralOcrResponse.class);
     }
 
     /**
@@ -294,12 +291,12 @@ public class BaiduOcr extends BaiduClient<AipOcr> {
      *                detect_language 是否检测语言，默认不检测。当前支持（中文、英语、日语、韩语）
      *                vertexes_location 是否返回文字外接多边形顶点位置，不支持单字位置。默认为false
      *                probability 是否返回识别结果中每一行的置信度
-     * @return {@link GeneralResponse}
+     * @return {@link GeneralOcrResponse}
      *
      * @since 2.2
      */
-    public GeneralResponse general(byte[] image, GeneralRequest options) {
-        return baiduBeanService.buildResponse(client.general(image, baiduBeanService.buildStringOptions(options)), GeneralResponse.class);
+    public GeneralOcrResponse general(byte[] image, GeneralOcrRequest options) {
+        return baiduBeanService.buildResponse(client.general(image, baiduBeanService.buildStringOptions(options)), GeneralOcrResponse.class);
     }
 
     /**
@@ -315,12 +312,12 @@ public class BaiduOcr extends BaiduClient<AipOcr> {
      *                detect_language 是否检测语言，默认不检测。当前支持（中文、英语、日语、韩语）
      *                vertexes_location 是否返回文字外接多边形顶点位置，不支持单字位置。默认为false
      *                probability 是否返回识别结果中每一行的置信度
-     * @return {@link GeneralResponse}
+     * @return {@link GeneralOcrResponse}
      *
      * @since 2.2
      */
-    public GeneralResponse general(String image, GeneralRequest options) {
-        return baiduBeanService.buildResponse(client.general(image, baiduBeanService.buildStringOptions(options)), GeneralResponse.class);
+    public GeneralOcrResponse general(String image, GeneralOcrRequest options) {
+        return baiduBeanService.buildResponse(client.general(image, baiduBeanService.buildStringOptions(options)), GeneralOcrResponse.class);
     }
 
     /**
@@ -336,12 +333,12 @@ public class BaiduOcr extends BaiduClient<AipOcr> {
      *                detect_language 是否检测语言，默认不检测。当前支持（中文、英语、日语、韩语）
      *                vertexes_location 是否返回文字外接多边形顶点位置，不支持单字位置。默认为false
      *                probability 是否返回识别结果中每一行的置信度
-     * @return {@link GeneralResponse}
+     * @return {@link GeneralOcrResponse}
      *
      * @since 2.2
      */
-    public GeneralResponse generalUrl(String url, GeneralRequest options) {
-        return baiduBeanService.buildResponse(client.generalUrl(url, baiduBeanService.buildStringOptions(options)), GeneralResponse.class);
+    public GeneralOcrResponse generalUrl(String url, GeneralOcrRequest options) {
+        return baiduBeanService.buildResponse(client.generalUrl(url, baiduBeanService.buildStringOptions(options)), GeneralOcrResponse.class);
     }
 
     /**
@@ -358,12 +355,12 @@ public class BaiduOcr extends BaiduClient<AipOcr> {
      *                detect_language 是否检测语言，默认不检测。当前支持（中文、英语、日语、韩语）
      *                vertexes_location 是否返回文字外接多边形顶点位置，不支持单字位置。默认为false
      *                probability 是否返回识别结果中每一行的置信度
-     * @return {@link GeneralResponse}
+     * @return {@link GeneralOcrResponse}
      *
      * @since 2.2
      */
-    public GeneralResponse generalPdf(byte[] pdf, int num, GeneralRequest options) {
-        return baiduBeanService.buildResponse(((AipOcrExtend) client).generalPdf(pdf, num, baiduBeanService.buildStringOptions(options)), GeneralResponse.class);
+    public GeneralOcrResponse generalPdf(byte[] pdf, int num, GeneralOcrRequest options) {
+        return baiduBeanService.buildResponse(((AipOcrExtend) client).generalPdf(pdf, num, baiduBeanService.buildStringOptions(options)), GeneralOcrResponse.class);
     }
 
     /**
@@ -380,12 +377,12 @@ public class BaiduOcr extends BaiduClient<AipOcr> {
      *                detect_language 是否检测语言，默认不检测。当前支持（中文、英语、日语、韩语）
      *                vertexes_location 是否返回文字外接多边形顶点位置，不支持单字位置。默认为false
      *                probability 是否返回识别结果中每一行的置信度
-     * @return {@link GeneralResponse}
+     * @return {@link GeneralOcrResponse}
      *
      * @since 2.2
      */
-    public GeneralResponse generalPdf(String pdf, int num, GeneralRequest options) {
-        return baiduBeanService.buildResponse(((AipOcrExtend) client).generalPdf(pdf, num, baiduBeanService.buildStringOptions(options)), GeneralResponse.class);
+    public GeneralOcrResponse generalPdf(String pdf, int num, GeneralOcrRequest options) {
+        return baiduBeanService.buildResponse(((AipOcrExtend) client).generalPdf(pdf, num, baiduBeanService.buildStringOptions(options)), GeneralOcrResponse.class);
     }
 
     /**
@@ -402,12 +399,12 @@ public class BaiduOcr extends BaiduClient<AipOcr> {
      *                detect_language 是否检测语言，默认不检测。当前支持（中文、英语、日语、韩语）
      *                vertexes_location 是否返回文字外接多边形顶点位置，不支持单字位置。默认为false
      *                probability 是否返回识别结果中每一行的置信度
-     * @return {@link GeneralResponse}
+     * @return {@link GeneralOcrResponse}
      *
      * @since 2.2
      */
-    public GeneralResponse generalOfd(byte[] ofd, int num, GeneralRequest options) {
-        return baiduBeanService.buildResponse(((AipOcrExtend) client).generalOfd(ofd, num, baiduBeanService.buildStringOptions(options)), GeneralResponse.class);
+    public GeneralOcrResponse generalOfd(byte[] ofd, int num, GeneralOcrRequest options) {
+        return baiduBeanService.buildResponse(((AipOcrExtend) client).generalOfd(ofd, num, baiduBeanService.buildStringOptions(options)), GeneralOcrResponse.class);
     }
 
     /**
@@ -424,12 +421,12 @@ public class BaiduOcr extends BaiduClient<AipOcr> {
      *                detect_language 是否检测语言，默认不检测。当前支持（中文、英语、日语、韩语）
      *                vertexes_location 是否返回文字外接多边形顶点位置，不支持单字位置。默认为false
      *                probability 是否返回识别结果中每一行的置信度
-     * @return {@link GeneralResponse}
+     * @return {@link GeneralOcrResponse}
      *
      * @since 2.2
      */
-    public GeneralResponse generalOfd(String ofd, int num, GeneralRequest options) {
-        return baiduBeanService.buildResponse(((AipOcrExtend) client).generalOfd(ofd, num, baiduBeanService.buildStringOptions(options)), GeneralResponse.class);
+    public GeneralOcrResponse generalOfd(String ofd, int num, GeneralOcrRequest options) {
+        return baiduBeanService.buildResponse(((AipOcrExtend) client).generalOfd(ofd, num, baiduBeanService.buildStringOptions(options)), GeneralOcrResponse.class);
     }
 
     /**
@@ -443,12 +440,12 @@ public class BaiduOcr extends BaiduClient<AipOcr> {
      *                detect_direction 是否检测图像朝向，默认不检测，即：false。朝向是指输入图像是正常方向、逆时针旋转90/180/270度。可选值包括:<br>- true：检测朝向；<br>- false：不检测朝向。
      *                vertexes_location 是否返回文字外接多边形顶点位置，不支持单字位置。默认为false
      *                probability 是否返回识别结果中每一行的置信度
-     * @return {@link GeneralResponse}
+     * @return {@link GeneralOcrResponse}
      *
      * @since 2.2
      */
-    public GeneralResponse accurateGeneral(byte[] image, AccurateGeneralRequest options) {
-        return baiduBeanService.buildResponse(client.accurateGeneral(image, baiduBeanService.buildStringOptions(options)), GeneralResponse.class);
+    public GeneralOcrResponse accurateGeneral(byte[] image, GeneralOcrRequest options) {
+        return baiduBeanService.buildResponse(client.accurateGeneral(image, baiduBeanService.buildStringOptions(options)), GeneralOcrResponse.class);
     }
 
     /**
@@ -462,12 +459,12 @@ public class BaiduOcr extends BaiduClient<AipOcr> {
      *                detect_direction 是否检测图像朝向，默认不检测，即：false。朝向是指输入图像是正常方向、逆时针旋转90/180/270度。可选值包括:<br>- true：检测朝向；<br>- false：不检测朝向。
      *                vertexes_location 是否返回文字外接多边形顶点位置，不支持单字位置。默认为false
      *                probability 是否返回识别结果中每一行的置信度
-     * @return {@link GeneralResponse}
+     * @return {@link GeneralOcrResponse}
      *
      * @since 2.2
      */
-    public GeneralResponse accurateGeneral(String image, AccurateGeneralRequest options) {
-        return baiduBeanService.buildResponse(client.accurateGeneral(image, baiduBeanService.buildStringOptions(options)), GeneralResponse.class);
+    public GeneralOcrResponse accurateGeneral(String image, GeneralOcrRequest options) {
+        return baiduBeanService.buildResponse(client.accurateGeneral(image, baiduBeanService.buildStringOptions(options)), GeneralOcrResponse.class);
     }
 
     /**
@@ -481,12 +478,12 @@ public class BaiduOcr extends BaiduClient<AipOcr> {
      *                detect_direction 是否检测图像朝向，默认不检测，即：false。朝向是指输入图像是正常方向、逆时针旋转90/180/270度。可选值包括:<br>- true：检测朝向；<br>- false：不检测朝向。
      *                vertexes_location 是否返回文字外接多边形顶点位置，不支持单字位置。默认为false
      *                probability 是否返回识别结果中每一行的置信度
-     * @return {@link GeneralResponse}
+     * @return {@link GeneralOcrResponse}
      *
      * @since 2.2
      */
-    public GeneralResponse accurateGeneralUrl(String url, AccurateGeneralRequest options) {
-        return baiduBeanService.buildResponse(((AipOcrExtend) client).accurateGeneralUrl(url, baiduBeanService.buildStringOptions(options)), GeneralResponse.class);
+    public GeneralOcrResponse accurateGeneralUrl(String url, GeneralOcrRequest options) {
+        return baiduBeanService.buildResponse(((AipOcrExtend) client).accurateGeneralUrl(url, baiduBeanService.buildStringOptions(options)), GeneralOcrResponse.class);
     }
 
     /**
@@ -501,12 +498,12 @@ public class BaiduOcr extends BaiduClient<AipOcr> {
      *                detect_direction 是否检测图像朝向，默认不检测，即：false。朝向是指输入图像是正常方向、逆时针旋转90/180/270度。可选值包括:<br>- true：检测朝向；<br>- false：不检测朝向。
      *                vertexes_location 是否返回文字外接多边形顶点位置，不支持单字位置。默认为false
      *                probability 是否返回识别结果中每一行的置信度
-     * @return {@link GeneralResponse}
+     * @return {@link GeneralOcrResponse}
      *
      * @since 2.2
      */
-    public GeneralResponse accurateGeneralPdf(byte[] pdf, int num, AccurateGeneralRequest options) {
-        return baiduBeanService.buildResponse(((AipOcrExtend) client).accurateGeneralPdf(pdf, num, baiduBeanService.buildStringOptions(options)), GeneralResponse.class);
+    public GeneralOcrResponse accurateGeneralPdf(byte[] pdf, int num, GeneralOcrRequest options) {
+        return baiduBeanService.buildResponse(((AipOcrExtend) client).accurateGeneralPdf(pdf, num, baiduBeanService.buildStringOptions(options)), GeneralOcrResponse.class);
     }
 
     /**
@@ -521,12 +518,12 @@ public class BaiduOcr extends BaiduClient<AipOcr> {
      *                detect_direction 是否检测图像朝向，默认不检测，即：false。朝向是指输入图像是正常方向、逆时针旋转90/180/270度。可选值包括:<br>- true：检测朝向；<br>- false：不检测朝向。
      *                vertexes_location 是否返回文字外接多边形顶点位置，不支持单字位置。默认为false
      *                probability 是否返回识别结果中每一行的置信度
-     * @return {@link GeneralResponse}
+     * @return {@link GeneralOcrResponse}
      *
      * @since 2.2
      */
-    public GeneralResponse accurateGeneralPdf(String pdf, int num, AccurateGeneralRequest options) {
-        return baiduBeanService.buildResponse(((AipOcrExtend) client).accurateGeneralPdf(pdf, num, baiduBeanService.buildStringOptions(options)), GeneralResponse.class);
+    public GeneralOcrResponse accurateGeneralPdf(String pdf, int num, GeneralOcrRequest options) {
+        return baiduBeanService.buildResponse(((AipOcrExtend) client).accurateGeneralPdf(pdf, num, baiduBeanService.buildStringOptions(options)), GeneralOcrResponse.class);
     }
 
     /**
@@ -541,12 +538,12 @@ public class BaiduOcr extends BaiduClient<AipOcr> {
      *                detect_direction 是否检测图像朝向，默认不检测，即：false。朝向是指输入图像是正常方向、逆时针旋转90/180/270度。可选值包括:<br>- true：检测朝向；<br>- false：不检测朝向。
      *                vertexes_location 是否返回文字外接多边形顶点位置，不支持单字位置。默认为false
      *                probability 是否返回识别结果中每一行的置信度
-     * @return {@link GeneralResponse}
+     * @return {@link GeneralOcrResponse}
      *
      * @since 2.2
      */
-    public GeneralResponse accurateGeneralOfd(byte[] ofd, int num, AccurateGeneralRequest options) {
-        return baiduBeanService.buildResponse(((AipOcrExtend) client).accurateGeneralOfd(ofd, num, baiduBeanService.buildStringOptions(options)), GeneralResponse.class);
+    public GeneralOcrResponse accurateGeneralOfd(byte[] ofd, int num, GeneralOcrRequest options) {
+        return baiduBeanService.buildResponse(((AipOcrExtend) client).accurateGeneralOfd(ofd, num, baiduBeanService.buildStringOptions(options)), GeneralOcrResponse.class);
     }
 
     /**
@@ -561,12 +558,12 @@ public class BaiduOcr extends BaiduClient<AipOcr> {
      *                detect_direction 是否检测图像朝向，默认不检测，即：false。朝向是指输入图像是正常方向、逆时针旋转90/180/270度。可选值包括:<br>- true：检测朝向；<br>- false：不检测朝向。
      *                vertexes_location 是否返回文字外接多边形顶点位置，不支持单字位置。默认为false
      *                probability 是否返回识别结果中每一行的置信度
-     * @return {@link GeneralResponse}
+     * @return {@link GeneralOcrResponse}
      *
      * @since 2.2
      */
-    public GeneralResponse accurateGeneralOfd(String ofd, int num, AccurateGeneralRequest options) {
-        return baiduBeanService.buildResponse(((AipOcrExtend) client).accurateGeneralOfd(ofd, num, baiduBeanService.buildStringOptions(options)), GeneralResponse.class);
+    public GeneralOcrResponse accurateGeneralOfd(String ofd, int num, GeneralOcrRequest options) {
+        return baiduBeanService.buildResponse(((AipOcrExtend) client).accurateGeneralOfd(ofd, num, baiduBeanService.buildStringOptions(options)), GeneralOcrResponse.class);
     }
 
     /**

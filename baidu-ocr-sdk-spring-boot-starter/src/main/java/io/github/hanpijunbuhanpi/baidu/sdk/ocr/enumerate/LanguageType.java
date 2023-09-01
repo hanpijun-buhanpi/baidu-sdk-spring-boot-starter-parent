@@ -10,7 +10,7 @@ import io.github.hanpijunbuhanpi.baidu.sdk.common.exception.NotFoundEnumExceptio
  * @author hanpijun-buhanpi
  * @since 2.2
  */
-public enum AccurateLanguageType {
+public enum LanguageType {
     /** 自动检测语言，并识别 */
     AUTO_DETECT("auto_detect", "自动检测语言，并识别"),
     /** 中英文混合 */
@@ -70,10 +70,10 @@ public enum AccurateLanguageType {
     public final String value;
 
     @JsonCreator
-    public static AccurateLanguageType parse(String value) {
-        for (AccurateLanguageType accurateLanguageType : values()) {
-            if (accurateLanguageType.value.equals(value)) {
-                return accurateLanguageType;
+    public static LanguageType parse(String value) {
+        for (LanguageType languageType : values()) {
+            if (languageType.value.equals(value)) {
+                return languageType;
             }
         }
         throw new NotFoundEnumException();
@@ -84,7 +84,7 @@ public enum AccurateLanguageType {
      */
     public final String desc;
 
-    AccurateLanguageType(String value, String desc) {
+    LanguageType(String value, String desc) {
         this.value = value;
         this.desc = desc;
     }

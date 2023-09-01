@@ -12,7 +12,7 @@ import java.util.List;
  * @since 2.2
  */
 @Data
-public class ParagraphsResult {
+public class Paragraphs {
     /**
      * 一个段落包含的行序号，当 paragraph=true 时返回该字段
      */
@@ -20,13 +20,19 @@ public class ParagraphsResult {
     private List<Integer> wordsResultIdx;
 
     /**
+     * <pre>
      * 识别结果中每一行的多边形轮廓点坐标，当 vertexes_location=true 时返回该字段
+     * 注：仅限通用文件识别（标准含位置版）、通用文字识别（高精度含位置版）返回
+     * </pre>
      */
     @JsonProperty("finegrained_vertexes_location")
     private List<VertexesLocation> finegrainedVertexesLocation;
 
     /**
-     * min_finegrained_vertexes_location
+     * <pre>
+     * 表示 finegrained_poly_location对应的最小外包矩形点坐标，当 vertexes_location=true 时返回该字段
+     * 注：仅限通用文件识别（标准含位置版）、通用文字识别（高精度含位置版）返回
+     * </pre>
      */
     @JsonProperty("min_finegrained_vertexes_location")
     private List<VertexesLocation> minFinegrainedVertexesLocation;

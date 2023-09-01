@@ -81,12 +81,12 @@ public class OcrRequestTest {
     public void basicGeneralOfd() throws Exception {
         GeneralBasicRequest generalBasicRequest = new GeneralBasicRequest(GeneralBasicLanguageType.CHN_ENG, true, true, true, true);
         // 正常页码
-        GeneralBasicResponse generalBasicResponse = baiduOcr.basicGeneralPdf("C:\\Users\\Administrator\\Desktop\\123.ofd", 1, generalBasicRequest);
+        GeneralBasicResponse generalBasicResponse = baiduOcr.basicGeneralOfd("C:\\Users\\Administrator\\Desktop\\123.ofd", 1, generalBasicRequest);
         System.out.println(objectMapper.writeValueAsString(generalBasicResponse));
         // 异常页码
-        generalBasicResponse = baiduOcr.basicGeneralPdf("C:\\Users\\Administrator\\Desktop\\123.ofd", -1, generalBasicRequest);
+        generalBasicResponse = baiduOcr.basicGeneralOfd("C:\\Users\\Administrator\\Desktop\\123.ofd", -1, generalBasicRequest);
         System.out.println(objectMapper.writeValueAsString(generalBasicResponse));
-        generalBasicResponse = baiduOcr.basicGeneralPdf("C:\\Users\\Administrator\\Desktop\\123.ofd", 500, generalBasicRequest);
+        generalBasicResponse = baiduOcr.basicGeneralOfd("C:\\Users\\Administrator\\Desktop\\123.ofd", 500, generalBasicRequest);
         System.out.println(objectMapper.writeValueAsString(generalBasicResponse));
     }
 

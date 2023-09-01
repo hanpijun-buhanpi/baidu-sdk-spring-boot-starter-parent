@@ -127,7 +127,7 @@ public class AipOcrExtend extends AipOcr {
     public JSONObject basicGeneralOfd(String ofd, int num, HashMap<String, String> options) {
         try {
             byte[] data = Util.readFileByBytes(ofd);
-            return basicGeneralPdf(data, num, options);
+            return basicGeneralOfd(data, num, options);
         } catch (IOException e) {
             e.printStackTrace();
             return AipErrorExtend.OFD_READ_ERROR.toJsonResult();
@@ -204,7 +204,7 @@ public class AipOcrExtend extends AipOcr {
     public JSONObject basicAccurateGeneralPdf(String pdf, int num, HashMap<String, String> options) {
         try {
             byte[] data = Util.readFileByBytes(pdf);
-            return basicGeneralPdf(data, num, options);
+            return basicAccurateGeneralPdf(data, num, options);
         } catch (IOException e) {
             e.printStackTrace();
             return AipErrorExtend.PDF_READ_ERROR.toJsonResult();
@@ -255,7 +255,7 @@ public class AipOcrExtend extends AipOcr {
     public JSONObject basicAccurateGeneralOfd(String ofd, int num, HashMap<String, String> options) {
         try {
             byte[] data = Util.readFileByBytes(ofd);
-            return basicGeneralPdf(data, num, options);
+            return basicAccurateGeneralOfd(data, num, options);
         } catch (IOException e) {
             e.printStackTrace();
             return AipErrorExtend.OFD_READ_ERROR.toJsonResult();

@@ -290,7 +290,7 @@ public class AipOcrExtend extends AipOcr {
         if (options != null) {
             request.addBody(options);
         }
-        request.setUri(OcrConsts.ACCURATE);
+        request.setUri(OcrConsts.GENERAL);
         postOperation(request);
         return requestServer(request);
     }
@@ -351,7 +351,7 @@ public class AipOcrExtend extends AipOcr {
         if (options != null) {
             request.addBody(options);
         }
-        request.setUri(OcrConsts.ACCURATE);
+        request.setUri(OcrConsts.GENERAL);
         postOperation(request);
         return requestServer(request);
     }
@@ -380,7 +380,7 @@ public class AipOcrExtend extends AipOcr {
             return generalOfd(data, num, options);
         } catch (IOException e) {
             e.printStackTrace();
-            return AipErrorExtend.PDF_READ_ERROR.toJsonResult();
+            return AipErrorExtend.OFD_READ_ERROR.toJsonResult();
         }
     }
 

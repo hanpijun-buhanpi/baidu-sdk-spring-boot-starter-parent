@@ -263,6 +263,128 @@ public class AipOcrExtend extends AipOcr {
     }
 
     /**
+     * 通用文字识别（含位置信息版）接口
+     * 用户向服务请求识别PDF文件中某页中的所有文字，相对于通用文字识别该产品精度更高，但是识别耗时会稍长。
+     *
+     * @param pdf   - 二进制PDF文件数据
+     * @param num   - PDF文件页码
+     * @param options - 可选参数对象，key: value都为string类型
+     *                options - options列表:
+     *                recognize_granularity 是否定位单字符位置，big：不定位单字符位置，默认值；small：定位单字符位置
+     *                language_type 识别语言类型，默认为CHN_ENG。可选值包括：<br>- CHN_ENG：中英文混合；<br>- ENG：英文；<br>- POR：葡萄牙语；<br>- FRE：法语；<br>- GER：德语；<br>- ITA：意大利语；<br>- SPA：西班牙语；<br>- RUS：俄语；<br>- JAP：日语；<br>- KOR：韩语；
+     *                detect_direction 是否检测图像朝向，默认不检测，即：false。朝向是指输入图像是正常方向、逆时针旋转90/180/270度。可选值包括:<br>- true：检测朝向；<br>- false：不检测朝向。
+     *                detect_language 是否检测语言，默认不检测。当前支持（中文、英语、日语、韩语）
+     *                vertexes_location 是否返回文字外接多边形顶点位置，不支持单字位置。默认为false
+     *                probability 是否返回识别结果中每一行的置信度
+     * @return {@link JSONObject}
+     *
+     * @since 2.2
+     */
+    public JSONObject generalPdf(byte[] pdf, int num, HashMap<String, String> options) {
+        AipRequest request = new AipRequest();
+        preOperation(request);
+
+        String base64Content = Base64Util.encode(pdf);
+        request.addBody("pdf_file", base64Content);
+        request.addBody("pdf_file_num", num);
+        if (options != null) {
+            request.addBody(options);
+        }
+        request.setUri(OcrConsts.ACCURATE);
+        postOperation(request);
+        return requestServer(request);
+    }
+
+    /**
+     * 通用文字识别（含位置信息版）接口
+     * 用户向服务请求识别PDF文件中某页中的所有文字，相对于通用文字识别该产品精度更高，但是识别耗时会稍长。
+     *
+     * @param pdf   - 本地PDF文件路径
+     * @param num   - PDF文件页码
+     * @param options - 可选参数对象，key: value都为string类型
+     *                options - options列表:
+     *                recognize_granularity 是否定位单字符位置，big：不定位单字符位置，默认值；small：定位单字符位置
+     *                language_type 识别语言类型，默认为CHN_ENG。可选值包括：<br>- CHN_ENG：中英文混合；<br>- ENG：英文；<br>- POR：葡萄牙语；<br>- FRE：法语；<br>- GER：德语；<br>- ITA：意大利语；<br>- SPA：西班牙语；<br>- RUS：俄语；<br>- JAP：日语；<br>- KOR：韩语；
+     *                detect_direction 是否检测图像朝向，默认不检测，即：false。朝向是指输入图像是正常方向、逆时针旋转90/180/270度。可选值包括:<br>- true：检测朝向；<br>- false：不检测朝向。
+     *                detect_language 是否检测语言，默认不检测。当前支持（中文、英语、日语、韩语）
+     *                vertexes_location 是否返回文字外接多边形顶点位置，不支持单字位置。默认为false
+     *                probability 是否返回识别结果中每一行的置信度
+     * @return {@link JSONObject}
+     *
+     * @since 2.2
+     */
+    public JSONObject generalPdf(String pdf, int num, HashMap<String, String> options) {
+        try {
+            byte[] data = Util.readFileByBytes(pdf);
+            return generalPdf(data, num, options);
+        } catch (IOException e) {
+            e.printStackTrace();
+            return AipErrorExtend.PDF_READ_ERROR.toJsonResult();
+        }
+    }
+
+    /**
+     * 通用文字识别（含位置信息版）接口
+     * 用户向服务请求识别OFD文件中某页中的所有文字，相对于通用文字识别该产品精度更高，但是识别耗时会稍长。
+     *
+     * @param pdf   - 二进制OFD文件数据
+     * @param num   - OFD文件页码
+     * @param options - 可选参数对象，key: value都为string类型
+     *                options - options列表:
+     *                recognize_granularity 是否定位单字符位置，big：不定位单字符位置，默认值；small：定位单字符位置
+     *                language_type 识别语言类型，默认为CHN_ENG。可选值包括：<br>- CHN_ENG：中英文混合；<br>- ENG：英文；<br>- POR：葡萄牙语；<br>- FRE：法语；<br>- GER：德语；<br>- ITA：意大利语；<br>- SPA：西班牙语；<br>- RUS：俄语；<br>- JAP：日语；<br>- KOR：韩语；
+     *                detect_direction 是否检测图像朝向，默认不检测，即：false。朝向是指输入图像是正常方向、逆时针旋转90/180/270度。可选值包括:<br>- true：检测朝向；<br>- false：不检测朝向。
+     *                detect_language 是否检测语言，默认不检测。当前支持（中文、英语、日语、韩语）
+     *                vertexes_location 是否返回文字外接多边形顶点位置，不支持单字位置。默认为false
+     *                probability 是否返回识别结果中每一行的置信度
+     * @return {@link JSONObject}
+     *
+     * @since 2.2
+     */
+    public JSONObject generalOfd(byte[] pdf, int num, HashMap<String, String> options) {
+        AipRequest request = new AipRequest();
+        preOperation(request);
+
+        String base64Content = Base64Util.encode(pdf);
+        request.addBody("ofd_file", base64Content);
+        request.addBody("ofd_file_num", num);
+        if (options != null) {
+            request.addBody(options);
+        }
+        request.setUri(OcrConsts.ACCURATE);
+        postOperation(request);
+        return requestServer(request);
+    }
+
+    /**
+     * 通用文字识别（含位置信息版）接口
+     * 用户向服务请求识别OFD文件中某页中的所有文字，相对于通用文字识别该产品精度更高，但是识别耗时会稍长。
+     *
+     * @param ofd   - 本地OFD文件路径
+     * @param num   - OFD文件页码
+     * @param options - 可选参数对象，key: value都为string类型
+     *                options - options列表:
+     *                recognize_granularity 是否定位单字符位置，big：不定位单字符位置，默认值；small：定位单字符位置
+     *                language_type 识别语言类型，默认为CHN_ENG。可选值包括：<br>- CHN_ENG：中英文混合；<br>- ENG：英文；<br>- POR：葡萄牙语；<br>- FRE：法语；<br>- GER：德语；<br>- ITA：意大利语；<br>- SPA：西班牙语；<br>- RUS：俄语；<br>- JAP：日语；<br>- KOR：韩语；
+     *                detect_direction 是否检测图像朝向，默认不检测，即：false。朝向是指输入图像是正常方向、逆时针旋转90/180/270度。可选值包括:<br>- true：检测朝向；<br>- false：不检测朝向。
+     *                detect_language 是否检测语言，默认不检测。当前支持（中文、英语、日语、韩语）
+     *                vertexes_location 是否返回文字外接多边形顶点位置，不支持单字位置。默认为false
+     *                probability 是否返回识别结果中每一行的置信度
+     * @return {@link JSONObject}
+     *
+     * @since 2.2
+     */
+    public JSONObject generalOfd(String ofd, int num, HashMap<String, String> options) {
+        try {
+            byte[] data = Util.readFileByBytes(ofd);
+            return generalOfd(data, num, options);
+        } catch (IOException e) {
+            e.printStackTrace();
+            return AipErrorExtend.PDF_READ_ERROR.toJsonResult();
+        }
+    }
+
+    /**
      * 身份证识别接口
      * 用户向服务请求识别身份证，身份证识别包括正面和背面。
      *

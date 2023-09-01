@@ -192,6 +192,7 @@ public class GeneralOcrRequest {
      * 构建通用文字识别（高精度含位置版）请求
      *
      * @param languageType 识别语言类型
+     * @param engGranularity 英文单字符识别粒度
      * @param recognizeGranularity 是否定位单字符位置
      * @param detectDirection 是否检测图像朝向
      * @param paragraph 是否输出段落信息

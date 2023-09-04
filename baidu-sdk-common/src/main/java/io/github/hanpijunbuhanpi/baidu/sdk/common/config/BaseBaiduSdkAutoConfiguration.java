@@ -3,11 +3,13 @@ package io.github.hanpijunbuhanpi.baidu.sdk.common.config;
 import com.baidu.aip.client.BaseClient;
 import com.baidu.aip.util.AipClientConst;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import io.github.hanpijunbuhanpi.baidu.sdk.common.aop.BaiduClientAop;
 import io.github.hanpijunbuhanpi.baidu.sdk.common.config.property.BaseBaiduConfigurationProperties;
 import io.github.hanpijunbuhanpi.baidu.sdk.common.config.property.BaiduGlobalConfigurationProperties;
 import io.github.hanpijunbuhanpi.baidu.sdk.common.exception.BaiduClientInitException;
 import io.github.hanpijunbuhanpi.baidu.sdk.common.service.BaiduBeanService;
 import io.github.hanpijunbuhanpi.baidu.sdk.common.service.impl.BaiduBeanServiceJacksonImpl;
+import org.springframework.aop.Pointcut;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnClass;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
@@ -20,7 +22,7 @@ import java.net.Proxy;
  * 百度SDK自动配置
  *
  * @author hanpijun-buhanpi
- * @since 2.2
+ * @since 2.2.1
  */
 public class BaseBaiduSdkAutoConfiguration {
     /**
@@ -110,5 +112,20 @@ public class BaseBaiduSdkAutoConfiguration {
     @ConditionalOnMissingBean({BaiduBeanService.class})
     public BaiduBeanService baiduBeanService() {
         return new BaiduBeanServiceJacksonImpl();
+    }
+
+    /**
+     * 注册百度客户端AOP
+     *
+     * @return 百度客户端AOP
+     *
+     * @since 2.2.1
+     */
+    @Bean
+    @ConditionalOnProperty(prefix = "baidu-sdk.global", name = "enable", havingValue = "true", matchIfMissing = true)
+    @ConditionalOnClass(Pointcut.class)
+    @ConditionalOnMissingBean({BaiduClientAop.class})
+    public BaiduClientAop baiduClientAop() {
+        return new BaiduClientAop();
     }
 }

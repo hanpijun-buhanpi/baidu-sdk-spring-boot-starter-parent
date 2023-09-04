@@ -15,7 +15,7 @@
 
     <groupId>io.github.hanpijun-buhanpi</groupId>
     <artifactId>baidu-sdk-spring-boot-starter-parent</artifactId>
-    <version>2.2</version>
+    <version>2.2.1</version>
     <name>baidu-sdk-spring-boot-starter-parent</name>
     <description>百度SDK起步依赖父模块</description>
     <url>https://github.com/hanpijun-buhanpi/baidu-sdk-spring-boot-starter-parent</url>
@@ -43,20 +43,20 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
         <baidu.aip.version>4.16.16</baidu.aip.version>
-        <common.version>2.2</common.version>
-        <body-analysis.version>2.1</body-analysis.version>
-        <content-censor.version>2.1</content-censor.version>
-        <easy-dl.version>2.1</easy-dl.version>
-        <face.version>2.1</face.version>
-        <image-classify.version>2.1</image-classify.version>
-        <image-process.version>2.1</image-process.version>
-        <image-search.version>2.1</image-search.version>
-        <kg.version>2.1</kg.version>
-        <machine-translation.version>2.1</machine-translation.version>
-        <nlp.version>2.1</nlp.version>
-        <ocr.version>2.2</ocr.version>
-        <speech.version>2.1</speech.version>
-        <starter.version>2.2</starter.version>
+        <common.version>2.2.1</common.version>
+        <body-analysis.version>2.1.1</body-analysis.version>
+        <content-censor.version>2.1.1</content-censor.version>
+        <easy-dl.version>2.1.1</easy-dl.version>
+        <face.version>2.1.1</face.version>
+        <image-classify.version>2.1.1</image-classify.version>
+        <image-process.version>2.1.1</image-process.version>
+        <image-search.version>2.1.1</image-search.version>
+        <kg.version>2.1.1</kg.version>
+        <machine-translation.version>2.1.1</machine-translation.version>
+        <nlp.version>2.1.1</nlp.version>
+        <ocr.version>2.2.1</ocr.version>
+        <speech.version>2.1.1</speech.version>
+        <starter.version>2.2.1</starter.version>
     </properties>
 
     <licenses>
